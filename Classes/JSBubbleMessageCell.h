@@ -39,6 +39,9 @@
 #define DATE_LABEL_HEIGHT 12.0f
 
 @interface JSBubbleMessageCell : UITableViewCell
+@property (strong, nonatomic) UIImageView *animationView;
+
+@property (strong, nonatomic) NSString *imageNameStr;
 
 #pragma mark - Initialization
 - (id)initWithBubbleStyle:(JSBubbleMessageStyle)style
@@ -48,6 +51,7 @@
 
 #pragma mark - Message Cell
 - (void)setMessage:(NSString *)msg;
+- (void)setAnimationImage:(NSString *)imageName;
 - (void)setTimestamp:(NSDate *)date;
 - (void)setPhoto:(NSString *)photoUrl;
 - (void) setPhotoWithImage: (UIImage *)image;

@@ -17,6 +17,8 @@
 #import "HYZBadgeView.h"
 #import "ECUSTNotReadCell.h"
 #import "JSBadgeView.h"
+#import "myFileViewController.h"
+#import "WalaNewMsgVC.h"
 
 #define kDidReceiveChat @"didReceiveChat"
 
@@ -378,7 +380,7 @@
     }
 //    [self scrollToBottomAnimated:YES];
 //    [self scrollToBottomAnimated:YES];
-    self.labelUserJid.text = self.chatUserJid.bare;
+    self.labelUserJid.text = self.chatUserJid.user;
 }
 
 
@@ -403,8 +405,18 @@
 //    NSInteger section = [indexPath section];
     
     XMPPMessageArchiving_Message_CoreDataObject *message = [self.arrayChats objectAtIndex:[indexPath row]];
-    return message.body;
+    return [XMPPMessageArchiving_Message_CoreDataObject getMessageStringFromMessageBody:message];
     //return [self.messages objectAtIndex:indexPath.row];
+}
+
+
+- (NSString *)imagenameForRowAtIndexPath:(NSIndexPath *)indexPath{
+    XMPPMessageArchiving_Message_CoreDataObject *message = [self.arrayChats objectAtIndex:[indexPath row]];
+    NSString *imageNamStr = [XMPPMessageArchiving_Message_CoreDataObject getImageStringFromMessageBody:message];
+    if(!imageNamStr){
+        imageNamStr = @"019-0001";
+    }
+    return imageNamStr;
 }
 
 
@@ -535,7 +547,7 @@
 }
 
 - (void) bottomButtonAttachClicked:(id)sender{
-    
+    [self performSegueWithIdentifier:@"allFiles" sender:self];
 }
 
 - (void) bottomButtonReplyClicked:(id)sender{
@@ -549,9 +561,13 @@
         userTable.sourceViewController = self;
     }
     else if([segue.identifier isEqualToString: @"inputChatTextToReply"]){
-        ECUSTTextInputVC *chat = (ECUSTTextInputVC *)[segue destinationViewController];
+        WalaNewMsgVC *chat = (WalaNewMsgVC *)[segue destinationViewController];
         chat.chatJID = self.chatUserJid;
         chat.sourceViewController = self;
+    }
+    else if([segue.identifier isEqualToString:@"allFiles"]){
+        myFileViewController *myFileVC = (myFileViewController *)[segue destinationViewController];
+        myFileVC.userJID = self.chatUserJid;
     }
 }
 @end

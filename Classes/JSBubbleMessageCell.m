@@ -36,16 +36,23 @@
 #import "JSBubbleMessageCell.h"
 #import "UIColor+JSMessagesView.h"
 #import "UIImageView+AFNetworking.h"
+#import <QuartzCore/QuartzCore.h>
 
 #define photoEdgeInsets (UIEdgeInsets){2,4,2,4}
-#define photoSize (CGSize){40,40}
+#define photoSize (CGSize){45,45}
+#define bubbleSize (CGSize){421,234}
+
 @interface JSBubbleMessageCell(){
     UIActivityIndicatorView *_indicatorView;
 }
 
 @property (strong, nonatomic) JSBubbleView *bubbleView;
+@property (strong, nonatomic) UIImageView *bubbleViewBackground;
 @property (strong, nonatomic) UIImageView *photoView;
 @property (strong, nonatomic) UILabel *timestampLabel;
+@property (nonatomic) JSBubbleMessageStyle *style;
+
+
 
 - (void)setup;
 - (void)configureTimestampLabel;
@@ -64,6 +71,7 @@
 //    frame.origin.x += 120;
 //    frame.size.width -= 120;
     frame.size.width = 480;
+    frame.size.height = 240;
 //    frame.size.height-=160;
     [super setFrame:frame];
 }
@@ -89,7 +97,7 @@
     self.timestampLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f,
                                                                     4.0f,
                                                                     self.bounds.size.width,
-                                                                    14.5f)];
+                                                                    14.0f)];
     self.timestampLabel.autoresizingMask =  UIViewAutoresizingFlexibleWidth;
     self.timestampLabel.backgroundColor = [UIColor clearColor];
     self.timestampLabel.textAlignment = NSTextAlignmentCenter;
@@ -104,6 +112,8 @@
 
 - (void)configureWithStyle:(JSBubbleMessageStyle)style timestamp:(BOOL)hasTimestamp photo:(BOOL) hasPhoto
 {
+    self.style = style;
+    
     CGFloat bubbleY = 0.0f;
     
     if(hasTimestamp) {
@@ -113,10 +123,10 @@
     CGFloat rightOffsetX=0.0f;
     CGFloat leftOffsetX=0.0f;
 //    float temp;
-    float temp1 = self.contentView.frame.size.width;
-    float temp2 = self.contentView.frame.size.height;
-    float temp3 = photoSize.width;
-    float temp4= photoSize.height;
+//    float temp1 = self.contentView.frame.size.width;
+//    float temp2 = self.contentView.frame.size.height;
+//    float temp3 = photoSize.width;
+//    float temp4= photoSize.height;
 
     
     
@@ -124,10 +134,11 @@
         
         if(style==JSBubbleMessageStyleIncomingDefault||style==JSBubbleMessageStyleIncomingSquare){
             rightOffsetX=photoEdgeInsets.left+photoSize.width+photoEdgeInsets.right;
-            self.photoView=[[UIImageView alloc] initWithFrame:(CGRect){photoEdgeInsets.left,self.contentView.frame.size.height-photoEdgeInsets.bottom-photoSize.height,photoSize}];
+//            self.photoView=[[UIImageView alloc] initWithFrame:(CGRect){photoEdgeInsets.left,self.contentView.frame.size.height-photoEdgeInsets.bottom-photoSize.height,photoSize}];
+            self.photoView = [[UIImageView alloc] initWithFrame:CGRectMake(4, 70, 45, 45)];
         }else{
-            leftOffsetX=photoEdgeInsets.left+photoSize.width+photoEdgeInsets.right;
-            self.photoView=[[UIImageView alloc] initWithFrame:(CGRect){self.contentView.frame.size.width-photoEdgeInsets.right-photoSize.width,self.contentView.frame.size.height-photoEdgeInsets.bottom-photoSize.height,photoSize}];
+//            leftOffsetX=photoEdgeInsets.left+photoSize.width+photoEdgeInsets.right;
+//            self.photoView=[[UIImageView alloc] initWithFrame:(CGRect){self.contentView.frame.size.width-photoEdgeInsets.right-photoSize.width,self.contentView.frame.size.height-photoEdgeInsets.bottom-photoSize.height,photoSize}];
 //            self.photoView=[[UIImageView alloc] initWithFrame:(CGRect){430,-5,photoSize}];
         }
         [self.contentView addSubview:self.photoView];
@@ -135,10 +146,25 @@
 //        UIImage *testImage=[UIImage imageNamed:@"send"];
 //        self.photoView.image=testImage;
     }
-    CGRect frame = CGRectMake(rightOffsetX,
-                              bubbleY,
-                              self.contentView.frame.size.width-rightOffsetX-leftOffsetX,
-                              self.contentView.frame.size.height - self.timestampLabel.frame.size.height);
+    
+    if(style==JSBubbleMessageStyleIncomingDefault||style==JSBubbleMessageStyleIncomingSquare){
+        self.bubbleViewBackground = [[UIImageView alloc] initWithFrame:(CGRect){50, 5, bubbleSize}];
+        UIImage *left = [UIImage imageNamed:@"msgIncoming_Chatview"];
+        [self.bubbleViewBackground setImage:left];
+        
+    }
+    else{
+        self.bubbleViewBackground = [[UIImageView alloc] initWithFrame:(CGRect){50, 5, bubbleSize}];
+        UIImage *right = [UIImage imageNamed:@"msgOutgoing_Chatview"];
+        [self.bubbleViewBackground setImage:right];
+    }
+//    [self.contentView addSubview:self.bubbleViewBackground];
+//    [self.contentView subviews
+//     self.photoView.autoresizingMask=UIViewAutoresizingFlexibleTopMargin;
+    CGRect frame = CGRectMake(0,
+                              0,
+                              480,
+                              248 - self.timestampLabel.frame.size.height);
 //    CGRect frame = CGRectMake(rightOffsetX,
 //                              bubbleY,
 //                              self.contentView.frame.size.width+rightOffsetX-leftOffsetX,
@@ -146,9 +172,9 @@
     
     self.bubbleView = [[JSBubbleView alloc] initWithFrame:frame
                                               bubbleStyle:style];
+       
     
-    
-    self.bubbleView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+//    self.bubbleView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     [self.contentView addSubview:self.bubbleView];
     [self.contentView sendSubviewToBack:self.bubbleView];
@@ -177,11 +203,57 @@
 {
     self.bubbleView.text = msg;
 }
+
+
+- (void)setAnimationImage:(NSString *)imageName{
+    self.imageNameStr = imageName;
+    
+    NSMutableArray *images;
+    if(!images){
+        images = [[NSMutableArray alloc]init];
+    }
+    NSMutableString *imageNameTemp = [[NSMutableString alloc]initWithString:_imageNameStr];
+    NSMutableString *temp = [[NSMutableString alloc]initWithString:[imageNameTemp substringToIndex:imageNameTemp.length-2]];
+    for(int i=1;i<=100;i++){
+        NSMutableString *imageString;
+        if(i<10){
+            imageString = [NSMutableString stringWithString:temp.copy];
+            [imageString appendString:@"0"];
+        }
+        else {
+            imageString = [NSMutableString stringWithString:temp.copy];
+        }
+        [imageString appendString:[NSString stringWithFormat:@"%d",i]];
+        UIImage *newIMG = [UIImage imageNamed:imageString];
+        if(newIMG){
+            [images addObject:newIMG];
+        }
+        else break;
+    }//    UIImageView *animationView;
+    if(self.style==JSBubbleMessageStyleIncomingDefault||self.style==JSBubbleMessageStyleIncomingSquare){
+        _animationView = [[UIImageView alloc]initWithFrame:CGRectMake(80, 30, 180, 150)];
+        
+    }
+    else{
+        _animationView = [[UIImageView alloc]initWithFrame:CGRectMake(100, 30, 180, 150)];
+    }
+    _animationView.animationImages = images;
+    [_animationView setAnimationDuration:2.f];
+    [_animationView setAnimationRepeatCount:0];
+    [_animationView startAnimating];
+    [_animationView setBackgroundColor:[UIColor clearColor]];
+    [self.contentView addSubview:_animationView];
+
+}
+
 - (void) setPhoto:(NSString *)photoUrl
 {
 //    UIImage *image=[UIImage imageNamed:photoUrl];
 //    self.photoView.image=image;
     [self.photoView setImageWithURL:[NSURL URLWithString:photoUrl] placeholderImage:[UIImage imageNamed:@"default_avatar.jpg"]];
+    CALayer *layer = self.photoView.layer;
+    [layer setMasksToBounds:YES];
+    [layer setCornerRadius:0.7];
     
 }
 
@@ -191,6 +263,9 @@
     }
     else
         [self.photoView setImage:[UIImage imageNamed:@"default_avatar.jpg"]];
+    CALayer *layer = self.photoView.layer;
+    [layer setMasksToBounds:YES];
+    [layer setCornerRadius:7];
 }
 
 - (void)setTimestamp:(NSDate *)date

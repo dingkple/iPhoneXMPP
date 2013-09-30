@@ -15,6 +15,7 @@
 @property (strong, nonatomic) UILabel *messageLabel;
 @property (strong, nonatomic) UILabel *messageNotReadLabel;
 @property (strong, nonatomic) UIView *anchor;
+@property (strong, nonatomic) UILabel *msgTimeLabel;
 
 
 

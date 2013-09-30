@@ -17,6 +17,8 @@
 #import "MJDetailViewController.h"
 #import "KxMenu.h"
 #import "UIViewController+MJPopupViewController.h"
+#import "WalaBuddycell.h"
+#import "AddBuddyByInputViewController.h"
 
 #define kPopupModalAnimationDuration 0.35
 #define kMJSourceViewTag 23941
@@ -25,6 +27,8 @@
 #define kMJOverlayViewTag 23945
 
 #define kServername @"127.0.0.1"
+
+#define buddyCellSize 446,54
 
 
 
@@ -46,6 +50,16 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 @property (strong, nonatomic) NSMutableArray *searchResultArray;
 @property (strong, nonatomic) XMPPUserCoreDataStorageObject *selectedUser;
 @property (nonatomic) BOOL isNewRequestExists;
+@property (nonatomic) CGRect buddyTableRectTop;
+@property (nonatomic) CGRect buddyTableRectBottom;
+@property (nonatomic) CGRect requestTableRect;
+@property (nonatomic) CGRect requestTableBkgRect;
+
+
+@property (strong, nonatomic) UIImageView *requestTableBkg;
+
+@property (strong, nonatomic) AddBuddyByInputViewController *addBuddyViewPop;
+
 -(void) savedSubscription;
 
 @end
@@ -67,6 +81,18 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     }
     return self;
 }
+- (void)awakeFromNib{
+    self.tabBarController.tabBar.tintColor = [[UIColor alloc] initWithRed:0.141
+                                                                    green:0.165
+                                                                     blue:0.180
+                                                                    alpha:1.0];
+    
+    UITabBarItem *item = [[UITabBarItem alloc] initWithTitle:@"我的好友" image:nil tag:2];
+    [item setFinishedSelectedImage:[UIImage imageNamed:@"BottomActionbarIcon1_2"]
+       withFinishedUnselectedImage:[UIImage imageNamed:@"BottomActionbarIcon1_1"]];
+    
+    self.tabBarItem = item;
+}
 
 - (void)viewDidLoad
 {
@@ -82,6 +108,16 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     _arrayOfCharacters = [[NSArray alloc]initWithObjects:@"A",@"B",@"C",@"D",@"E",@"F",@"G",@"H",@"I",@"J",@"K",@"L",@"M",@"N",@"O",@"P",@"Q",@"R",@"S",@"T",@"U",@"V",@"W",@"X",@"Y",@"Z",nil];
     _isNewRequestExists = NO;
     [self showTabBar];
+//    self.tabBarController.tabBar.tintColor = [[UIColor alloc] initWithRed:0.141
+//                                                                    green:0.165
+//                                                                     blue:0.180
+//                                                                    alpha:1.0];
+//    
+//    UITabBarItem *item = [[UITabBarItem alloc] initWithTitle:@"我的好友" image:nil tag:2];
+//    [item setFinishedSelectedImage:[UIImage imageNamed:@"BottomActionbarIcon1_1"]
+//       withFinishedUnselectedImage:[UIImage imageNamed:@"BottomActionbarIcon1_2"]];
+//    
+//    self.tabBarItem = item;
 }
 
 - (void)didReceiveMemoryWarning
@@ -92,46 +128,86 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 }
 
 -(void) setupView{
+    
+    self.buddyTableRectBottom = CGRectMake(15, 155, 446, 128);
+    self.buddyTableRectTop = CGRectMake(15, 75, 446, 208);
+    self.requestTableRect = CGRectMake(15, 75, 446, 80);
+    self.requestTableBkgRect = CGRectMake(15, 95, 446, 54);
+    
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bottomBackground_Buddylist"]]];
+    
+    
+    
+    
     const CGFloat W = self.view.bounds.size.width;
     const CGFloat H = self.view.bounds.size.height;
     UIButton *addNewButton;
     UIButton *backToLogin;
     
-    backToLogin = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    backToLogin.frame = CGRectMake(6, 10, 40, 30);
-    backToLogin.tag = 101;
-    [backToLogin setTitle:@"back" forState:UIControlStateNormal];
-    [backToLogin addTarget:self action:@selector(disconnect:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:backToLogin];
+   
     
-    addNewButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    addNewButton.frame = CGRectMake(W-40, 10, 40, 30);
-    addNewButton.tag = 102;
-    [addNewButton setTitle:@"new" forState:UIControlStateNormal];
-    [addNewButton addTarget:self action:@selector(showMenu:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:addNewButton];
+    UIImageView *background = [[UIImageView alloc]initWithFrame:CGRectMake(13, 0, 454, 300)];
+    background.image = [UIImage imageNamed:@"background_Buddylist"];
+    [self.view insertSubview:background atIndex:0];
     
-    UIView *searchBarView = [[UIView alloc] initWithFrame:CGRectMake(50, 0, 386, 40)];
+    
+//    backToLogin = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//    backToLogin.frame = CGRectMake(6, 10, 40, 30);
+//    backToLogin.tag = 101;
+//    [backToLogin setTitle:@"back" forState:UIControlStateNormal];
+//    [backToLogin addTarget:self action:@selector(disconnect:) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:backToLogin];
+//    
+//    addNewButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//    addNewButton.frame = CGRectMake(W-40, 10, 40, 30);
+//    addNewButton.tag = 102;
+//    [addNewButton setTitle:@"new" forState:UIControlStateNormal];
+//    [addNewButton addTarget:self action:@selector(showMenu:) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:addNewButton];
+    
+    UIView *searchBarView = [[UIView alloc] initWithFrame:CGRectMake(40, 33, 200, 40)];
     searchBarView.backgroundColor = [UIColor clearColor];
-    self.searchBuddyBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 386, 40)];
+    self.searchBuddyBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 200, 40)];
     self.searchBuddyBar.delegate = self;
-    self.searchBuddyBar.barStyle = UIBarStyleBlackTranslucent;
+    self.searchBuddyBar.barStyle = UIBarStyleDefault;
     self.searchBuddyBar.autocorrectionType = UITextAutocapitalizationTypeNone;
     self.searchBuddyBar.placeholder = @"search";
     self.searchBuddyBar.keyboardType = UIKeyboardTypeDefault;
     self.searchBuddyBar.showsCancelButton = NO;
-        
-    UIView *searchBarBkg = [self.searchBuddyBar.subviews objectAtIndex:0];
+//    self.searchBuddyBar.tintColor = [UIColor colorWithRed:1 green:0.965 blue:0.898 alpha:1];
+//    self.searchBuddyBar.inputView.backgroundColor = [UIColor colorWithRed:1 green:0.965 blue:0.898 alpha:1];
+//    self.searchBuddyBar set
+    [[self.searchBuddyBar.subviews objectAtIndex:0]removeFromSuperview];
+    
+//    UIView *searchBarBkg = [self.searchBuddyBar.subviews objectAtIndex:0];
     [searchBarView addSubview:self.searchBuddyBar];
-    searchBarBkg.bounds = searchBarBkg.frame;
+//    searchBarBkg.bounds = searchBarBkg.frame;
     [self.view addSubview:searchBarView];
+    
+    
+    UIButton *addBuddyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    addBuddyBtn.frame = CGRectMake(270, 15, 171, 58);
+    addBuddyBtn.tag = 103;
+    [addBuddyBtn setBackgroundImage:[UIImage imageNamed:@"addbuddyButton"] forState:UIControlStateNormal];
+    [addBuddyBtn addTarget:self action:@selector(addNewBuddy:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:addBuddyBtn];
+
     
     [self showTableViews];
     
-    self.searchDisplayCrl = [[UISearchDisplayController alloc] initWithSearchBar:self.searchBuddyBar contentsController:self];
-    self.searchDisplayCrl.delegate = self;
-    self.searchDisplayCrl.searchResultsDataSource = self;
-    self.searchDisplayCrl.searchResultsDelegate = self;
+//    self.searchDisplayCrl = [[UISearchDisplayController alloc] initWithSearchBar:self.searchBuddyBar contentsController:self];
+//    self.searchDisplayCrl.delegate = self;
+//    self.searchDisplayCrl.searchResultsDataSource = self;
+//    self.searchDisplayCrl.searchResultsDelegate = self;
+    
+    
+    self.buddyTableView.backgroundColor = [UIColor clearColor];
+    
+    UIImageView *backgroundTopcover = [[UIImageView alloc]initWithFrame:CGRectMake(1, 0, 478, 67)];
+    backgroundTopcover.image = [UIImage imageNamed:@"topCoverSmall_Buddylist"];
+    [self.view addSubview:backgroundTopcover];
+    
+    
     
 }
 
@@ -145,19 +221,21 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 - (void)showRequestTableAndAdjustView{
     //if one or two of the table is nil, then alloc them
     if (!self.requestTableview || !self.buddyTableView) {
-        self.requestTableview = [[UITableView alloc] initWithFrame:CGRectMake(50, 40, 386, 80) style:UITableViewStylePlain];
-        self.requestTableview.backgroundColor = [UIColor whiteColor];
-        self.requestTableview.delegate = self;
-        self.requestTableview.dataSource = self;
-        self.requestTableview.tag = 201;
-        [self.requestTableview setRowHeight:50];
-        self.requestTableview.bounces = NO;
-        self.requestTableview.separatorStyle = UITableViewCellSeparatorStyleNone;
-        self.requestTableview.hidden = NO;
-        [self.view addSubview:self.requestTableview];
-        
+        if(!self.requestTableview){
+            self.requestTableview = [[UITableView alloc] initWithFrame:self.requestTableRect style:UITableViewStylePlain];
+            self.requestTableview.backgroundColor = [UIColor clearColor];
+            self.requestTableview.delegate = self;
+            self.requestTableview.dataSource = self;
+            self.requestTableview.tag = 201;
+            [self.requestTableview setRowHeight:50];
+            self.requestTableview.bounces = NO;
+            self.requestTableview.separatorStyle = UITableViewCellSeparatorStyleNone;
+            self.requestTableview.hidden = NO;
+            
+            [self.view addSubview:self.requestTableview];
+        }
         if(!self.buddyTableView){
-            self.buddyTableView = [[UITableView alloc] initWithFrame:CGRectMake(50, 124, 386, 128) style:UITableViewStylePlain];
+            self.buddyTableView = [[UITableView alloc] initWithFrame:self.buddyTableRectBottom style:UITableViewStylePlain];
             self.buddyTableView.backgroundColor = [UIColor whiteColor];
             self.buddyTableView.delegate = self;
             self.buddyTableView.dataSource = self;
@@ -168,39 +246,50 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     }
     else {
         //reset the TableViews' frame
-        self.buddyTableView.frame = CGRectMake(50, 124, 386, 128);
+        self.buddyTableView.frame = self.buddyTableRectBottom;
         self.requestTableview.hidden = NO;
+        self.requestTableview.backgroundColor = [UIColor clearColor];
+        if(!_requestTableBkg){
+            _requestTableBkg = [[UIImageView alloc]initWithFrame:self.requestTableBkgRect];
+        }
+        _requestTableBkg.image = [UIImage imageNamed:@"4.3Board_1.png"];
+        [self.view addSubview:_requestTableBkg];
     }
 
 }
 
 - (void) hideRequestViewAndAdjustView{
     if (!self.requestTableview || !self.buddyTableView) {
-        self.requestTableview = [[UITableView alloc] initWithFrame:CGRectMake(50, 40, 386, 80) style:UITableViewStylePlain];
-        self.requestTableview.backgroundColor = [UIColor whiteColor];
+        if(!self.requestTableview){
+//            self.requestTableview = [[UITableView alloc] initWithFrame:CGRectMake(50, 40, 386, 80) style:UITableViewStylePlain];
+            self.requestTableview = [[UITableView alloc] initWithFrame:self.requestTableRect style:UITableViewStylePlain];
+        }
+        self.requestTableview.backgroundColor = [UIColor clearColor];
         self.requestTableview.delegate = self;
         self.requestTableview.dataSource = self;
         self.requestTableview.tag = 201;
         [self.requestTableview setRowHeight:50];
         self.requestTableview.bounces = NO;
         self.requestTableview.separatorStyle = UITableViewCellSeparatorStyleNone;
-        self.requestTableview.hidden = NO;
+        self.requestTableview.hidden = YES;
         [self.view addSubview:self.requestTableview];
         
+        
         if(!self.buddyTableView){
-            self.buddyTableView = [[UITableView alloc] initWithFrame:CGRectMake(50, 124, 386, 208) style:UITableViewStylePlain];
-            self.buddyTableView.backgroundColor = [UIColor whiteColor];
-            self.buddyTableView.delegate = self;
-            self.buddyTableView.dataSource = self;
-            self.buddyTableView.tag = 202;
-            [self.buddyTableView setRowHeight:50];
-            [self.view addSubview:self.buddyTableView];
+            self.buddyTableView = [[UITableView alloc] initWithFrame:self.buddyTableRectTop style:UITableViewStylePlain];
         }
+        self.buddyTableView.backgroundColor = [UIColor whiteColor];
+        self.buddyTableView.delegate = self;
+        self.buddyTableView.dataSource = self;
+        self.buddyTableView.tag = 202;
+        [self.buddyTableView setRowHeight:50];
+        [self.view addSubview:self.buddyTableView];
     }
 
     //only need to reset the buddyTable's frame, the requestTable could be nil
     self.requestTableview.hidden = YES;
-    self.buddyTableView.frame = CGRectMake(50, 40, 386, 208);
+    self.buddyTableView.frame = self.buddyTableRectTop;
+    self.requestTableBkg.hidden = YES;
 }
 
 - (void) showTableViews {
@@ -263,11 +352,26 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
         [reject addTarget:self action:@selector(rejectPresenceSubscriptionRequestFrom:) forControlEvents:UIControlEventTouchUpInside];
         [self presentPopupViewController:detailViewController animationType:MJPopupViewAnimationFade];
     }
+//    else if([note.name isEqualToString:@"addNewBuddyByJID"]){
+//        [self addBuddyBtnWithNotification:note];
+//       
+//    }
     else {
         [self.buddyTableView reloadData];
     }
 }
 
+//- (IBAction)acceptBuddyRequest:(id)sender {
+//    NSMutableString *newJid = [[NSMutableString alloc ] initWithString:self.userBareJidLabel.text];
+//    [newJid appendString:kServername];
+//    [[self appDelegate].xmppRoster acceptPresenceSubscriptionRequestFrom:[XMPPJID jidWithString:newJid] andAddToRoster:YES];
+//}
+//
+//- (IBAction)blockUser:(id)sender {
+//    NSMutableString *newJid = [[NSMutableString alloc ] initWithString:jidText];
+//    [newJid appendString:kServername];
+//    [[self appDelegate].xmppRoster rejectPresenceSubscriptionRequestFrom:[XMPPJID jidWithString:newJid]];
+//}
 
 
 
@@ -322,22 +426,22 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 #pragma mark UITableViewCell helpers
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-- (void)configurePhotoForCell:(UITableViewCell *)cell user:(XMPPUserCoreDataStorageObject *)user
+- (void)configurePhotoForCell:(WalaBuddycell *)cell user:(XMPPUserCoreDataStorageObject *)user
 {
 	// Our xmppRosterStorage will cache photos as they arrive from the xmppvCardAvatarModule.
 	// We only need to ask the avatar module for a photo, if the roster doesn't have it.
 	
 	if (user.photo != nil)
 	{
-		cell.imageView.image = user.photo;
+		cell.userPhotoView.image = user.photo;
 	}
 	else
 	{
 		NSData *photoData = [[[self appDelegate] xmppvCardAvatarModule] photoDataForJID:user.jid];
 		if (photoData != nil)
-			cell.imageView.image = [UIImage imageWithData:photoData];
+			cell.userPhotoView.image = [UIImage imageWithData:photoData];
 		else
-			cell.imageView.image = [UIImage imageNamed:@"defaultPerson"];
+			cell.userPhotoView.image = [UIImage imageNamed:@"defaultPerson"];
 	}
 }
 
@@ -351,7 +455,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     if(tableView == self.requestTableview )
         return  NO;
     else
-        return YES;
+        return NO;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -392,6 +496,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
         return 1;
     else if(tableView == self.searchDisplayCrl.searchResultsTableView)
         return 1;
+    return 1;
 }
 
 - (NSString *)tableView:(UITableView *)sender titleForHeaderInSection:(NSInteger)section
@@ -438,7 +543,8 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
         if (sectionIndex < [sections count])
         {
             id <NSFetchedResultsSectionInfo> sectionInfo = [sections objectAtIndex:sectionIndex];
-            return sectionInfo.numberOfObjects;
+            NSInteger num = [sectionInfo numberOfObjects];
+            return num;
         }
         
         return 0;
@@ -462,6 +568,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
         }
         self.cell.allRequestsArray = self.allRequestsArray;
         self.cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        self.cell.backgroundColor = [UIColor clearColor];
         return self.cell;
     }
     else if(tableView == self.searchDisplayCrl.searchResultsTableView ){
@@ -493,25 +600,54 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     else {
         
         static NSString *CellIdentifier = @"Cell";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        WalaBuddycell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil)
         {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+            cell = [[WalaBuddycell alloc] initWithStyle:UITableViewCellStyleDefault
                                           reuseIdentifier:CellIdentifier];
         }
         XMPPUserCoreDataStorageObject *user = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+        
+        //historical issue now display nickname
         NSMutableString *userName = [[NSMutableString alloc]initWithString:user.displayName];
         NSRange range = [userName rangeOfString:@"@"];
         if(range.location != NSNotFound){
             [userName setString:[userName substringToIndex:range.location]];
         }
-        cell.textLabel.text = userName;
-        if(user.isOnline){
-            cell.detailTextLabel.text = @"available";
-        }
-        else {
-            cell.detailTextLabel.text = @"unavailable";
-        }
+        cell.userNameLabel.text = userName;
+        
+//        cell.userNameLabel.text = user.nickname;
+//        if(user.photo){
+//            [cell setPhoto:user.photo];
+//            [cell autoresizesSubviews];
+//        }
+//        
+//        else {
+//            
+//        }
+        cell.tag = [indexPath row];
+        
+//        NSArray *subviews = [cell.contentView subviews];
+//        for(UIView *view in subviews)
+//        {
+//            if([view isKindOfClass:[UIButton class]])
+//            {
+//                
+//                view.tag = [indexPath row];
+//                [cell.contentView bringSubviewToFront:view];
+//            }    
+//        }
+        
+        [self configureCellDelButton:cell];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        
+        UISwipeGestureRecognizer *swipeleft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
+        [cell.contentView addGestureRecognizer:swipeleft];
+        swipeleft.direction = UISwipeGestureRecognizerDirectionLeft;
+//        UITapGestureRecognizer *tap  =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleCellTapped:)];
+//        [cell.contentView addGestureRecognizer:tap];
+        cell.userDescriptionLabel.text = user.subscription;
         [self configurePhotoForCell:cell user:user];
         return cell;
         
@@ -522,7 +658,18 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     if (tableView == self.buddyTableView){
+        WalaBuddycell *cell = (WalaBuddycell *)[tableView cellForRowAtIndexPath:indexPath];
+        if(cell.delButton.hidden == NO){
+            [UIView animateWithDuration:0.3f animations:^{
+                cell.delButton.hidden = YES;
+                cell.userDescriptionLabel.hidden = NO;
+                cell.userDescriptionView.hidden = NO;
+                
+            }];
+            return;
+        }
         XMPPUserCoreDataStorageObject *user = [[self fetchedResultsController] objectAtIndexPath:indexPath];
         self.selectedUser = user;
 //        ChatViewController *chatVC=[[ChatViewController alloc] init];
@@ -552,23 +699,23 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
         return 50;
     }
     else
-        return 50;
+        return 54;
 }
 
 
-- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
-{
-    if(tableView == self.buddyTableView){
-        NSMutableArray *toBeReturned = [[NSMutableArray alloc]init];
-        
-        for(char c = 'A';c<='Z';c++)
-            
-            [toBeReturned addObject:[NSString stringWithFormat:@"%c",c]];
-        
-        return toBeReturned;
-    }
-    else return nil;
-}
+//- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+//{
+//    if(tableView == self.buddyTableView){
+//        NSMutableArray *toBeReturned = [[NSMutableArray alloc]init];
+//        
+//        for(char c = 'A';c<='Z';c++)
+//            
+//            [toBeReturned addObject:[NSString stringWithFormat:@"%c",c]];
+//        
+//        return toBeReturned;
+//    }
+//    else return nil;
+//}
 
 - (NSInteger) indexOfTitle:(NSString *)title{
     NSInteger count = 0;
@@ -619,6 +766,46 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    
+    
+    if(tableView == self.buddyTableView){
+    }
+    else if(tableView == self.requestTableview){
+        UIView *requestHeader = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 22)];
+        [requestHeader setBackgroundColor:[UIColor clearColor]];
+        UIImageView *newfrd = [[UIImageView alloc]initWithFrame:CGRectMake(30, 0, 36, 12)];
+        newfrd.image = [UIImage imageNamed:@"4.3newFriend.png"];
+        [requestHeader addSubview:newfrd];
+        return requestHeader;
+        
+    }
+    
+    NSString *sectionTitle = [self tableView:tableView titleForHeaderInSection:section];
+    if (sectionTitle == nil) {
+        return nil;
+    }
+    
+    UIColor *textColor = [UIColor colorWithRed:0.835  green:0.682 blue:0.408 alpha:1];
+    
+    // Create label with section title
+    UILabel *label = [[UILabel alloc] init];
+    label.frame = CGRectMake(20, 0, 300, 22);
+    label.textColor = textColor;
+    label.backgroundColor = [UIColor clearColor];
+    label.font = [UIFont fontWithName:@"Helvetica-Bold" size:14];
+    label.text = sectionTitle;
+    
+    // Create header view and add label as a subview
+    UIView *sectionView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 22)];
+    [sectionView setBackgroundColor:[UIColor clearColor]];
+    [sectionView addSubview:label];
+    return sectionView;
+
+}
+
+
+
 //- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 //{
 //    
@@ -655,6 +842,15 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 //    [[self appDelegate].xmppRoster addUser:friendJID withNickname:nil];
 //    
     
+}
+
+- (void)addNewBuddy:(id)sender{
+    self.addBuddyViewPop = [[AddBuddyByInputViewController alloc]initWithNibName:@"AddBuddyByInputViewController" bundle:nil];
+    self.addBuddyViewPop.rootVC = self;
+    [self.addBuddyViewPop.addBuddyBtn addTarget:self action:@selector(addNewBuddyBtn:) forControlEvents:UIControlEventTouchUpInside];
+    self.addBuddyViewPop.jidTextField.delegate = self;
+    [self presentPopupViewController:self.addBuddyViewPop animationType:MJPopupViewAnimationFade];
+
 }
 
 
@@ -752,10 +948,10 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
                     target:nil
                     action:NULL],
       
-      [KxMenuItem menuItem:@"输入昵称查找"
+      [KxMenuItem menuItem:@"输入帐号查找"
                      image:[UIImage imageNamed:@"action_icon"]
                     target:self
-                    action:@selector(pushMenuItem:)],
+                    action:@selector(addNewFriendFromJID:)],
       
       [KxMenuItem menuItem:@"邀请好友"
                      image:[UIImage imageNamed:@"check_icon"]
@@ -872,5 +1068,110 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
         }
     }
 }
+
+- (void)addNewFriendFromJID:(XMPPJID *)friendJID{
+    
+}
+
+- (void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer{
+    NSLog(@"swipeleft");
+    NSArray *visiblecells = [self.buddyTableView visibleCells];
+    for(WalaBuddycell *cell in visiblecells)
+    {
+        if(cell.tag == recognizer.view.tag)
+        {
+            [UIView animateWithDuration:30.f animations:^{
+                cell.delButton.hidden = NO;
+                cell.userDescriptionLabel.hidden = YES;
+                cell.userDescriptionView.hidden = YES;
+               
+            }];
+            break;
+        }
+    }
+    
+}
+
+- (void)configureCellDelButton:(WalaBuddycell *)cell{
+    [cell.delButton addTarget:self action:@selector(deleteBuddy:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+
+- (void)handleCellTapped:(UITapGestureRecognizer *)recognizer{
+    NSArray *visiblecells = [self.buddyTableView visibleCells];
+    for(WalaBuddycell *cell in visiblecells)
+    {
+        if(cell.tag == recognizer.view.tag)
+        {
+            if(cell.delButton.hidden == NO){
+                cell.delButton.hidden = YES;
+                cell.userDescriptionLabel.hidden = NO;
+                cell.userDescriptionView.hidden = NO;
+                break;
+  
+            }
+            else {
+                
+            }
+        }
+    }
+}
+
+- (void)deleteBuddy:(WalaBuddycell *)cell{
+    NSLog(@"deleteBuddy");
+    // Delete the row from the data source
+    XMPPJID *jid;
+    NSIndexPath *indexPath;
+    NSArray *visiblecells = [self.buddyTableView visibleCells];
+    for(WalaBuddycell *aCell in visiblecells)
+    {
+        if(aCell.tag == cell.tag)
+        {
+            indexPath = [self.buddyTableView indexPathForCell:aCell];
+        }
+    }
+    
+    XMPPUserCoreDataStorageObject *user = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+    //        NSString *test = [[NSString alloc]initWithString:user.displayName];
+    NSRange range = [user.displayName rangeOfString:@"@"];
+    if(range.location == NSNotFound){
+        //                jid = [XMPPJID jidWithString:[NSString stringWithFormat:@"%@@%@",(NSString *)user.displayName,@"127.0.0.1"]];
+        jid = [XMPPJID jidWithString:user.displayName];
+    }
+    else {
+        jid = [XMPPJID jidWithString:user.displayName];
+    }
+    //         XMPPJID *jid = [XMPPJID jidWithString:user.displayName];
+    
+    [[[self appDelegate] xmppRoster] removeUser:jid];
+    [self.buddyTableView reloadData];
+
+}
+
+
+#pragma mark - Text view delegate
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+
+#pragma  mark addBuddyViewAction 
+
+- (void) addNewBuddyBtn:(id)sender {
+//    NSString *bareJid = [[note userInfo]objectForKey:@"userJid"];
+//    XMPPJID *userJid = [XMPPJID jidWithString:bareJid];
+//    [[[self appDelegate] xmppRoster] addUser:userJid withNickname:nil];
+    NSMutableString *userJID = [[NSMutableString alloc] initWithString:self.addBuddyViewPop.jidTextField.text];
+    [userJID appendString:@"@127.0.0.1"];
+    [[[self appDelegate] xmppRoster]addUser:[XMPPJID jidWithString:userJID] withNickname:nil];
+    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+}
+
 
 @end

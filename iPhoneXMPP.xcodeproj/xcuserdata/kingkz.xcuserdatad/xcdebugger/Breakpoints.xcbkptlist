@@ -73,11 +73,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/SettingsViewController.m"
-         timestampString = "396147461.029315"
+         timestampString = "399897664.612448"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "200"
-         endingLineNumber = "200"
+         startingLineNumber = "180"
+         endingLineNumber = "180"
          landmarkName = "-registerXMPP:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -86,11 +86,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/iPhoneXMPPAppDelegate.m"
-         timestampString = "396584713.901788"
+         timestampString = "399897154.698185"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "726"
-         endingLineNumber = "726"
+         startingLineNumber = "728"
+         endingLineNumber = "728"
          landmarkName = "-xmppStreamDidRegister:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -99,11 +99,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/iPhoneXMPPAppDelegate.m"
-         timestampString = "396584713.901788"
+         timestampString = "399897154.698185"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "740"
-         endingLineNumber = "740"
+         startingLineNumber = "742"
+         endingLineNumber = "742"
          landmarkName = "-xmppStream:didNotRegister:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -151,11 +151,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/SettingsViewController.m"
-         timestampString = "396147461.029315"
+         timestampString = "399897664.612448"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "241"
-         endingLineNumber = "241"
+         startingLineNumber = "226"
+         endingLineNumber = "226"
          landmarkName = "-buttonForReg:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -164,11 +164,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/SettingsViewController.m"
-         timestampString = "394429527.438065"
+         timestampString = "399897664.612448"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "39"
-         endingLineNumber = "39"
+         startingLineNumber = "88"
+         endingLineNumber = "88"
          landmarkName = "-viewDidLoad"
          landmarkType = "5">
       </FileBreakpoint>
@@ -177,11 +177,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/SettingsViewController.m"
-         timestampString = "396147461.029315"
+         timestampString = "399897664.612448"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "256"
-         endingLineNumber = "256"
+         startingLineNumber = "241"
+         endingLineNumber = "241"
          landmarkName = "-buttonForPrepare:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -190,11 +190,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/SettingsViewController.m"
-         timestampString = "396147461.029315"
+         timestampString = "399897664.612448"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "247"
-         endingLineNumber = "247"
+         startingLineNumber = "232"
+         endingLineNumber = "232"
          landmarkName = "-buttonForLogin:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -268,11 +268,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/iPhoneXMPPAppDelegate.m"
-         timestampString = "396584713.901788"
+         timestampString = "399897154.698185"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "731"
-         endingLineNumber = "731"
+         startingLineNumber = "733"
+         endingLineNumber = "733"
          landmarkName = "-xmppStreamDidRegister:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -355,19 +355,6 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Classes/SettingsViewController.m"
-         timestampString = "396147461.029315"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "174"
-         endingLineNumber = "174"
-         landmarkName = "-done:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
@@ -385,11 +372,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/ECUSTmyBuddylistViewController.m"
-         timestampString = "396230076.494617"
+         timestampString = "400089765.482881"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "414"
-         endingLineNumber = "414"
+         startingLineNumber = "499"
+         endingLineNumber = "499"
          landmarkName = "-tableView:titleForHeaderInSection:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -411,12 +398,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/JSBubbleView.m"
-         timestampString = "396015022.436287"
+         timestampString = "400305029.989763"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "190"
-         endingLineNumber = "190"
-         landmarkName = "+numberOfLinesForMessage:"
+         startingLineNumber = "235"
+         endingLineNumber = "235"
+         landmarkName = "+bubbleSizeForText:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -450,11 +437,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/ECUSTprepareToLogAndREgViewController.m"
-         timestampString = "394360373.939945"
+         timestampString = "399858038.251571"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "49"
-         endingLineNumber = "49"
+         startingLineNumber = "120"
+         endingLineNumber = "120"
          landmarkName = "-receiveNotification:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -515,11 +502,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/iPhoneXMPPAppDelegate.m"
-         timestampString = "396584713.901788"
+         timestampString = "399897154.698185"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "776"
-         endingLineNumber = "776"
+         startingLineNumber = "778"
+         endingLineNumber = "778"
          landmarkName = "-xmppRoster:didReceiveBuddyRequest:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -554,11 +541,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/JSBubbleMessageCell.m"
-         timestampString = "395983893.788013"
+         timestampString = "400685099.177063"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "125"
-         endingLineNumber = "125"
+         startingLineNumber = "135"
+         endingLineNumber = "135"
          landmarkName = "-configureWithStyle:timestamp:photo:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -567,24 +554,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/JSBubbleMessageCell.m"
-         timestampString = "395983893.788013"
+         timestampString = "400685099.177063"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "116"
-         endingLineNumber = "116"
-         landmarkName = "-configureWithStyle:timestamp:photo:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Classes/JSBubbleMessageCell.m"
-         timestampString = "395983893.788013"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "159"
-         endingLineNumber = "159"
+         startingLineNumber = "187"
+         endingLineNumber = "187"
          landmarkName = "-initWithBubbleStyle:hasTimestamp:hasPhoto:reuseIdentifier:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -593,11 +567,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/JSMessagesViewController.m"
-         timestampString = "396174958.240661"
+         timestampString = "400684844.245286"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "400"
-         endingLineNumber = "400"
+         startingLineNumber = "458"
+         endingLineNumber = "458"
          landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -606,11 +580,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/InfoCell.m"
-         timestampString = "395389203.668047"
+         timestampString = "400085891.96261"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "77"
-         endingLineNumber = "77"
+         startingLineNumber = "79"
+         endingLineNumber = "79"
          landmarkName = "-tableView:numberOfRowsInSection:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -619,11 +593,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/iPhoneXMPPAppDelegate.m"
-         timestampString = "396584713.901788"
+         timestampString = "399897154.698185"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "703"
-         endingLineNumber = "703"
+         startingLineNumber = "705"
+         endingLineNumber = "705"
          landmarkName = "-saveSubscribePresence"
          landmarkType = "5">
       </FileBreakpoint>
@@ -632,11 +606,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/InfoCell.m"
-         timestampString = "395389203.668047"
+         timestampString = "400083412.532173"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "66"
-         endingLineNumber = "66"
+         startingLineNumber = "67"
+         endingLineNumber = "67"
          landmarkName = "-initWithStyle:reuseIdentifier:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -658,11 +632,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/iPhoneXMPPAppDelegate.m"
-         timestampString = "396584713.901788"
+         timestampString = "399897154.698185"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "677"
-         endingLineNumber = "677"
+         startingLineNumber = "679"
+         endingLineNumber = "679"
          landmarkName = "-xmppRoster:didReceivePresenceSubscriptionRequest:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -671,11 +645,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/ECUSTmyBuddylistViewController.m"
-         timestampString = "395942222.673317"
+         timestampString = "400089765.482881"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "161"
-         endingLineNumber = "161"
+         startingLineNumber = "234"
+         endingLineNumber = "234"
          landmarkName = "-showRequestTableAndAdjustView"
          landmarkType = "5">
       </FileBreakpoint>
@@ -684,11 +658,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/ECUSTmyBuddylistViewController.m"
-         timestampString = "396230076.494617"
+         timestampString = "400089765.482881"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "617"
-         endingLineNumber = "617"
+         startingLineNumber = "744"
+         endingLineNumber = "744"
          landmarkName = "-tableView:sectionForSectionIndexTitle:atIndex:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -697,11 +671,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/ECUSTmyBuddylistViewController.m"
-         timestampString = "396230076.494617"
+         timestampString = "400089765.482881"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "631"
-         endingLineNumber = "631"
+         startingLineNumber = "798"
+         endingLineNumber = "798"
          landmarkName = "@implementation ECUSTmyBuddylistViewController"
          landmarkType = "3">
       </FileBreakpoint>
@@ -723,11 +697,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/iPhoneXMPPAppDelegate.m"
-         timestampString = "396584713.901788"
+         timestampString = "399897154.698185"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "644"
-         endingLineNumber = "644"
+         startingLineNumber = "646"
+         endingLineNumber = "646"
          landmarkName = "-xmppStream:didReceivePresence:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -736,11 +710,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/iPhoneXMPPAppDelegate.m"
-         timestampString = "396584713.901788"
+         timestampString = "399897154.698185"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "656"
-         endingLineNumber = "656"
+         startingLineNumber = "658"
+         endingLineNumber = "658"
          landmarkName = "-xmppStream:didReceivePresence:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -749,57 +723,57 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/ECUSTmyBuddylistViewController.m"
-         timestampString = "396230076.494617"
+         timestampString = "400089765.482881"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "960"
-         endingLineNumber = "960">
+         startingLineNumber = "1206"
+         endingLineNumber = "1206">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/ECUSTmyBuddylistViewController.m"
-         timestampString = "396230076.494617"
+         timestampString = "400089765.482881"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "984"
-         endingLineNumber = "984">
+         startingLineNumber = "1230"
+         endingLineNumber = "1230">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/ECUSTmyBuddylistViewController.m"
-         timestampString = "396230076.494617"
+         timestampString = "400089765.482881"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "967"
-         endingLineNumber = "967">
+         startingLineNumber = "1213"
+         endingLineNumber = "1213">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/ECUSTmyBuddylistViewController.m"
-         timestampString = "396230076.494617"
+         timestampString = "400089765.482881"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "972"
-         endingLineNumber = "972">
+         startingLineNumber = "1218"
+         endingLineNumber = "1218">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/ChatViewController.m"
-         timestampString = "396175782.723695"
+         timestampString = "400685697.296942"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "190"
-         endingLineNumber = "190"
-         landmarkName = "-sendPressed:withText:"
-         landmarkType = "5">
+         startingLineNumber = "192"
+         endingLineNumber = "192"
+         landmarkName = "@implementation ChatViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -819,11 +793,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/ECUSTMessageVC.m"
-         timestampString = "395496083.73758"
+         timestampString = "400131492.923361"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "86"
-         endingLineNumber = "86"
+         startingLineNumber = "103"
+         endingLineNumber = "103"
          landmarkName = "-fetchedContactResultsController"
          landmarkType = "5">
       </FileBreakpoint>
@@ -858,11 +832,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/ECUSTmyBuddylistViewController.m"
-         timestampString = "396230076.494617"
+         timestampString = "400089765.482881"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "392"
-         endingLineNumber = "392"
+         startingLineNumber = "476"
+         endingLineNumber = "476"
          landmarkName = "-numberOfSectionsInTableView:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -871,11 +845,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/ECUSTmyBuddylistViewController.m"
-         timestampString = "396230076.494617"
+         timestampString = "400089765.482881"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "423"
-         endingLineNumber = "423"
+         startingLineNumber = "508"
+         endingLineNumber = "508"
          landmarkName = "-tableView:titleForHeaderInSection:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -897,11 +871,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/iPhoneXMPPAppDelegate.m"
-         timestampString = "396584713.901788"
+         timestampString = "399897154.698185"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "599"
-         endingLineNumber = "599"
+         startingLineNumber = "601"
+         endingLineNumber = "601"
          landmarkName = "-xmppStream:didReceiveMessage:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -936,13 +910,13 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/ChatViewController.m"
-         timestampString = "396175782.723695"
+         timestampString = "400685697.296942"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "261"
-         endingLineNumber = "261"
-         landmarkName = "-messageStyleForRowAtIndexPath:"
-         landmarkType = "5">
+         startingLineNumber = "263"
+         endingLineNumber = "263"
+         landmarkName = "@implementation ChatViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -1013,38 +987,38 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "Classes/JSMessagesViewController.m"
-         timestampString = "396174958.240661"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "77"
-         endingLineNumber = "77"
-         landmarkName = "-setup"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
          filePath = "Classes/ChatViewController.m"
-         timestampString = "396174958.240661"
+         timestampString = "400685697.296942"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "537"
-         endingLineNumber = "537"
-         landmarkName = "@implementation ChatViewController"
-         landmarkType = "3">
+         startingLineNumber = "549"
+         endingLineNumber = "549"
+         landmarkName = "-bottomButtonAttachClicked:"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/JSMessagesViewController.m"
-         timestampString = "396174958.240661"
+         timestampString = "400513059.684909"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "315"
-         endingLineNumber = "315"
+         startingLineNumber = "369"
+         endingLineNumber = "369"
+         landmarkName = "@implementation JSMessagesViewController"
+         landmarkType = "3">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/ChatViewController.m"
+         timestampString = "400685697.296942"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "545"
+         endingLineNumber = "545"
          landmarkName = "-bottomButtonSoundInputClicked:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1053,25 +1027,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/ChatViewController.m"
-         timestampString = "396174958.240661"
+         timestampString = "400685697.296942"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "533"
-         endingLineNumber = "533"
-         landmarkName = "-bottomButtonReplyClicked:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Classes/ChatViewController.m"
-         timestampString = "396175782.723695"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "224"
-         endingLineNumber = "224"
-         landmarkName = "-sendPressedwithText:"
+         startingLineNumber = "226"
+         endingLineNumber = "226"
+         landmarkName = "-sendPressed:withText:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1144,11 +1105,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/ECUSTMessageVC.m"
-         timestampString = "396177777.943435"
+         timestampString = "400300966.166898"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "419"
-         endingLineNumber = "419"
+         startingLineNumber = "453"
+         endingLineNumber = "453"
          landmarkName = "-prepareForSegue:sender:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1157,11 +1118,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/ECUSTmyTabbarVC.m"
-         timestampString = "396781239.209628"
+         timestampString = "399264605.46507"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "190"
-         endingLineNumber = "190"
+         startingLineNumber = "188"
+         endingLineNumber = "188"
          landmarkName = "-changeView:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1170,11 +1131,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/ECUSTmyTabbarVC.m"
-         timestampString = "396781239.209628"
+         timestampString = "399264605.46507"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "258"
-         endingLineNumber = "258"
+         startingLineNumber = "256"
+         endingLineNumber = "256"
          landmarkName = "-changeView:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1218,7 +1179,7 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../../XMPPFramework-master/Extensions/XEP-0065/TURNSocket.m"
@@ -1378,11 +1339,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/ECUSTmyBuddylistViewController.m"
-         timestampString = "395942222.673317"
+         timestampString = "400089765.482881"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "178"
-         endingLineNumber = "178"
+         startingLineNumber = "258"
+         endingLineNumber = "258"
          landmarkName = "-hideRequestViewAndAdjustView"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1391,11 +1352,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/ECUSTMessageVC.m"
-         timestampString = "395496083.73758"
+         timestampString = "400299946.698161"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "254"
-         endingLineNumber = "254"
+         startingLineNumber = "286"
+         endingLineNumber = "286"
          landmarkName = "-tableView:commitEditingStyle:forRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1403,25 +1364,12 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "Classes/ECUSTmyBuddylistViewController.m"
-         timestampString = "396230076.494617"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "562"
-         endingLineNumber = "562"
-         landmarkName = "-sectionIndexTitlesForTableView:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
          filePath = "Classes/ECUSTMessageVC.m"
-         timestampString = "396177777.943435"
+         timestampString = "400300966.166898"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "371"
-         endingLineNumber = "371"
+         startingLineNumber = "405"
+         endingLineNumber = "405"
          landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1430,11 +1378,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/ECUSTMessageVC.m"
-         timestampString = "395496083.73758"
+         timestampString = "400299946.698161"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "348"
-         endingLineNumber = "348"
+         startingLineNumber = "380"
+         endingLineNumber = "380"
          landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1482,11 +1430,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/ECUSTmyBuddylistViewController.m"
-         timestampString = "395942222.673317"
+         timestampString = "400089765.482881"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "251"
-         endingLineNumber = "251"
+         startingLineNumber = "335"
+         endingLineNumber = "335"
          landmarkName = "-receiveNotification:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1495,11 +1443,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/InfoCell.m"
-         timestampString = "395936974.370788"
+         timestampString = "400087445.339871"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "106"
-         endingLineNumber = "106"
+         startingLineNumber = "115"
+         endingLineNumber = "115"
          landmarkName = "-tableView:didSelectRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1508,11 +1456,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/ECUSTmyBuddylistViewController.m"
-         timestampString = "395942222.673317"
+         timestampString = "400089765.482881"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "233"
-         endingLineNumber = "233"
+         startingLineNumber = "317"
+         endingLineNumber = "317"
          landmarkName = "-receiveNotification:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1521,11 +1469,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/ECUSTmyBuddylistViewController.m"
-         timestampString = "396230076.494617"
+         timestampString = "400089765.482881"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "360"
-         endingLineNumber = "360"
+         startingLineNumber = "444"
+         endingLineNumber = "444"
          landmarkName = "-tableView:commitEditingStyle:forRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1534,11 +1482,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/ECUSTmyBuddylistViewController.m"
-         timestampString = "396230076.494617"
+         timestampString = "400089765.482881"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "496"
-         endingLineNumber = "496"
+         startingLineNumber = "583"
+         endingLineNumber = "583"
          landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1560,11 +1508,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/ECUSTmyBuddylistViewController.m"
-         timestampString = "396230076.494617"
+         timestampString = "400089765.482881"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "688"
-         endingLineNumber = "688"
+         startingLineNumber = "855"
+         endingLineNumber = "855"
          landmarkName = "-acceptBuddyRequest:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1573,11 +1521,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/JSBubbleView.m"
-         timestampString = "395979171.261648"
+         timestampString = "399744187.355778"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "68"
-         endingLineNumber = "68"
+         startingLineNumber = "82"
+         endingLineNumber = "82"
          landmarkName = "-initWithFrame:bubbleStyle:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1586,11 +1534,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/JSMessagesViewController.m"
-         timestampString = "396174958.240661"
+         timestampString = "400472274.523624"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "104"
-         endingLineNumber = "104"
+         startingLineNumber = "93"
+         endingLineNumber = "93"
          landmarkName = "-setup"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1599,11 +1547,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/JSBubbleMessageCell.m"
-         timestampString = "395985739.713044"
+         timestampString = "400685099.177063"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "138"
-         endingLineNumber = "138"
+         startingLineNumber = "164"
+         endingLineNumber = "164"
          landmarkName = "-configureWithStyle:timestamp:photo:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1611,25 +1559,12 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "Classes/JSBubbleView.m"
-         timestampString = "395987101.735365"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "93"
-         endingLineNumber = "93"
-         landmarkName = "-drawRect:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
          filePath = "Classes/JSBubbleMessageCell.m"
-         timestampString = "395987352.61562"
+         timestampString = "400685099.177063"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "147"
-         endingLineNumber = "147"
+         startingLineNumber = "173"
+         endingLineNumber = "173"
          landmarkName = "-configureWithStyle:timestamp:photo:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1638,11 +1573,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/ChatViewController.m"
-         timestampString = "396175782.723695"
+         timestampString = "400685697.296942"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "78"
-         endingLineNumber = "78"
+         startingLineNumber = "80"
+         endingLineNumber = "80"
          landmarkName = "-viewWillAppear:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1651,12 +1586,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/ChatViewController.m"
-         timestampString = "396175782.723695"
+         timestampString = "400685697.296942"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "149"
-         endingLineNumber = "149"
-         landmarkName = "-tableView:numberOfRowsInSection:"
+         startingLineNumber = "151"
+         endingLineNumber = "151"
+         landmarkName = "-didReceiveMemoryWarning"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1664,11 +1599,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/JSMessagesViewController.m"
-         timestampString = "396174958.240661"
+         timestampString = "400513059.684909"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "323"
-         endingLineNumber = "323"
+         startingLineNumber = "378"
+         endingLineNumber = "378"
          landmarkName = "-bottomButtonReplyClicked:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1690,11 +1625,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/ChatViewController.m"
-         timestampString = "396175782.723695"
+         timestampString = "400685697.296942"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "235"
-         endingLineNumber = "235"
+         startingLineNumber = "237"
+         endingLineNumber = "237"
          landmarkName = "-sendPressedwithText:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1703,11 +1638,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/ChatViewController.m"
-         timestampString = "396175782.723695"
+         timestampString = "400685697.296942"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "366"
-         endingLineNumber = "366"
+         startingLineNumber = "368"
+         endingLineNumber = "368"
          landmarkName = "-readChatFromFetchController"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1716,11 +1651,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/ChatViewController.m"
-         timestampString = "396175782.723695"
+         timestampString = "400685697.296942"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "296"
-         endingLineNumber = "296"
+         startingLineNumber = "298"
+         endingLineNumber = "298"
          landmarkName = "-fetchedMessageResultsController"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1729,12 +1664,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/ChatViewController.m"
-         timestampString = "396175782.723695"
+         timestampString = "400685697.296942"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "281"
-         endingLineNumber = "281"
-         landmarkName = "-fetchedMessageResultsController"
+         startingLineNumber = "283"
+         endingLineNumber = "283"
+         landmarkName = "-hasTimestampForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1742,11 +1677,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/ChatViewController.m"
-         timestampString = "396175782.723695"
+         timestampString = "400685697.296942"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "421"
-         endingLineNumber = "421"
+         startingLineNumber = "433"
+         endingLineNumber = "433"
          landmarkName = "-photoForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1754,25 +1689,12 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "Classes/JSBubbleMessageCell.m"
-         timestampString = "396165108.614716"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "189"
-         endingLineNumber = "189"
-         landmarkName = "-setPhotoWithImage:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
          filePath = "Classes/ECUSTMessageVC.m"
-         timestampString = "396166916.868801"
+         timestampString = "400299946.698161"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "353"
-         endingLineNumber = "353"
+         startingLineNumber = "385"
+         endingLineNumber = "385"
          landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1781,11 +1703,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/ECUSTbuddyMessageInfoCell.m"
-         timestampString = "396176509.905479"
+         timestampString = "400300989.136077"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "61"
-         endingLineNumber = "61"
+         startingLineNumber = "85"
+         endingLineNumber = "85"
          landmarkName = "-setPhoto:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1794,24 +1716,24 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/ChatViewController.m"
-         timestampString = "396175782.723695"
+         timestampString = "400685697.296942"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "168"
-         endingLineNumber = "168"
-         landmarkName = "-tableView:didSelectRowAtIndexPath:"
-         landmarkType = "5">
+         startingLineNumber = "170"
+         endingLineNumber = "170"
+         landmarkName = "@implementation ChatViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/ChatViewController.m"
-         timestampString = "396175782.723695"
+         timestampString = "400685697.296942"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "335"
-         endingLineNumber = "335"
+         startingLineNumber = "337"
+         endingLineNumber = "337"
          landmarkName = "-controllerDidChangeContent:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1820,12 +1742,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/ChatViewController.m"
-         timestampString = "396175782.723695"
+         timestampString = "400685697.296942"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "379"
-         endingLineNumber = "379"
-         landmarkName = "-scrollToBottomAnimated:"
+         startingLineNumber = "381"
+         endingLineNumber = "381"
+         landmarkName = "-readChatFromFetchController"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1833,11 +1755,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/ChatViewController.m"
-         timestampString = "396175782.723695"
+         timestampString = "400685697.296942"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "372"
-         endingLineNumber = "372"
+         startingLineNumber = "374"
+         endingLineNumber = "374"
          landmarkName = "-readChatFromFetchController"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1859,11 +1781,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/ECUSTmyBuddylistViewController.m"
-         timestampString = "396230076.494617"
+         timestampString = "400089765.482881"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "593"
-         endingLineNumber = "593"
+         startingLineNumber = "720"
+         endingLineNumber = "720"
          landmarkName = "-tableView:sectionForSectionIndexTitle:atIndex:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1872,11 +1794,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/ECUSTmyBuddylistViewController.m"
-         timestampString = "396230140.494879"
+         timestampString = "400089765.482881"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "375"
-         endingLineNumber = "375"
+         startingLineNumber = "459"
+         endingLineNumber = "459"
          landmarkName = "-tableView:commitEditingStyle:forRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1998,7 +1920,7 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../../XMPPFramework-master/Extensions/XEP-0065/TURNSocket.m"
@@ -2015,11 +1937,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/ECUSTmyTabbarVC.m"
-         timestampString = "396781239.209628"
+         timestampString = "399264605.46507"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "167"
-         endingLineNumber = "167"
+         startingLineNumber = "165"
+         endingLineNumber = "165"
          landmarkName = "-fileTransfer:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -2028,11 +1950,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/ECUSTmyTabbarVC.m"
-         timestampString = "396781239.209628"
+         timestampString = "399264605.46507"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "152"
-         endingLineNumber = "152"
+         startingLineNumber = "150"
+         endingLineNumber = "150"
          landmarkName = "-startTurnSock:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -2067,11 +1989,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/ECUSTmyTabbarVC.m"
-         timestampString = "396781239.209628"
+         timestampString = "399264605.46507"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "318"
-         endingLineNumber = "318"
+         startingLineNumber = "316"
+         endingLineNumber = "316"
          landmarkName = "-turnSocket:didSucceed:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -2119,16 +2041,16 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/ECUSTmyTabbarVC.m"
-         timestampString = "396781239.209628"
+         timestampString = "399264605.46507"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "336"
-         endingLineNumber = "336"
+         startingLineNumber = "334"
+         endingLineNumber = "334"
          landmarkName = "-turnSocketDidRecieveFile:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../../XMPPFramework-master/Extensions/XEP-0065/TURNSocket.m"
@@ -2150,7 +2072,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "784"
          endingLineNumber = "784"
-         landmarkName = "-proceOfferingFile:"
+         landmarkName = "-processOfferingFile:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2158,11 +2080,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/ECUSTmyTabbarVC.m"
-         timestampString = "396781343.820398"
+         timestampString = "399264605.46507"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "140"
-         endingLineNumber = "140"
+         startingLineNumber = "138"
+         endingLineNumber = "138"
          landmarkName = "-loadImage"
          landmarkType = "5">
       </FileBreakpoint>
@@ -2171,11 +2093,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/ECUSTmyManulGenerate.m"
-         timestampString = "397367081.722523"
+         timestampString = "397927707.317324"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "78"
-         endingLineNumber = "78"
+         startingLineNumber = "83"
+         endingLineNumber = "83"
          landmarkName = "-setupViews"
          landmarkType = "5">
       </FileBreakpoint>
@@ -2184,11 +2106,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/ECUSTmyManulGenerate.m"
-         timestampString = "397367081.722523"
+         timestampString = "397927707.317324"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "126"
-         endingLineNumber = "126"
+         startingLineNumber = "132"
+         endingLineNumber = "132"
          landmarkName = "-setupViews"
          landmarkType = "5">
       </FileBreakpoint>
@@ -2197,12 +2119,25 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/ECUSTmyManulGenerate.m"
-         timestampString = "397367081.722523"
+         timestampString = "398782739.547617"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "161"
-         endingLineNumber = "161"
-         landmarkName = "-scrollViewDidScroll:"
+         startingLineNumber = "333"
+         endingLineNumber = "333"
+         landmarkName = "-updateViews:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../../XMPPFramework-master/Extensions/XEP-0065/TURNSocket.m"
+         timestampString = "397789424.940539"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "599"
+         endingLineNumber = "599"
+         landmarkName = "-sendOfferingInfoWithName:andData:To:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2210,25 +2145,415 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/ECUSTmyManulGenerate.m"
-         timestampString = "397367081.722523"
+         timestampString = "398782739.547617"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "190"
+         endingLineNumber = "190"
+         landmarkName = "-addBubble"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/ECUSTmyManulGenerate.m"
+         timestampString = "398782739.547617"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "253"
+         endingLineNumber = "253"
+         landmarkName = "-slectAlbum2:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/ECUSTmyManulGenerate.m"
+         timestampString = "398782739.547617"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "247"
+         endingLineNumber = "247"
+         landmarkName = "-slectAlbum1:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/ECUSTmyManulGenerate.m"
+         timestampString = "398782739.547617"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "261"
+         endingLineNumber = "261"
+         landmarkName = "-slectAlbum3:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/KxMenu.m"
+         timestampString = "397796308.877451"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "125"
+         endingLineNumber = "125"
+         landmarkName = "-performAction"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/ECUSTmyManulGenerate.m"
+         timestampString = "398782739.547617"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "340"
+         endingLineNumber = "340"
+         landmarkName = "-updateViews:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/ECUSTRoundView.m"
+         timestampString = "397924231.789118"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "180"
+         endingLineNumber = "180"
+         landmarkName = "-touchesMoved:withEvent:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/ECUSTRoundView.m"
+         timestampString = "397924231.789118"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "210"
+         endingLineNumber = "210"
+         landmarkName = "-scale:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/ECUSTmyManulGenerate.m"
+         timestampString = "398782739.547617"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "177"
+         endingLineNumber = "177"
+         landmarkName = "-cancelCurrentView:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/ECUSTmyManulGenerate.m"
+         timestampString = "398782739.547617"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "163"
+         endingLineNumber = "163"
+         landmarkName = "-addAlbum"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/myFileViewController.m"
+         timestampString = "399264718.025739"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "159"
+         endingLineNumber = "159"
+         landmarkName = "-tableView:didSelectRowAtIndexPath:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/iPhoneXMPPAppDelegate.m"
+         timestampString = "399897154.698185"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "815"
+         endingLineNumber = "815"
+         landmarkName = "-startTurnSock:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/iPhoneXMPPAppDelegate.m"
+         timestampString = "399897154.698185"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "544"
+         endingLineNumber = "544"
+         landmarkName = "-xmppStream:didReceiveIQ:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/iPhoneXMPPAppDelegate.m"
+         timestampString = "399897154.698185"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "861"
+         endingLineNumber = "861"
+         landmarkName = "-turnSocketDidRecieveFile:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/iPhoneXMPPAppDelegate.m"
+         timestampString = "399897154.698185"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "859"
+         endingLineNumber = "859"
+         landmarkName = "-turnSocketDidRecieveFile:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/SettingsViewController.m"
+         timestampString = "399897664.612448"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "152"
+         endingLineNumber = "152"
+         landmarkName = "-done:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/iPhoneXMPPAppDelegate.m"
+         timestampString = "399896922.77442"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "535"
+         endingLineNumber = "535"
+         landmarkName = "-xmppStream:didNotAuthenticate:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/SettingsViewController.m"
+         timestampString = "399897664.612448"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "207"
          endingLineNumber = "207"
-         landmarkName = "-updateViews"
+         landmarkName = "-loginError:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "Classes/ECUSTmyManulGenerate.m"
-         timestampString = "397367081.722523"
+         filePath = "Classes/ECUSTmyBuddylistViewController.m"
+         timestampString = "400089765.482881"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "199"
-         endingLineNumber = "199"
-         landmarkName = "-updateViews"
+         startingLineNumber = "521"
+         endingLineNumber = "521"
+         landmarkName = "-tableView:numberOfRowsInSection:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/ECUSTmyBuddylistViewController.m"
+         timestampString = "400089765.482881"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "1067"
+         endingLineNumber = "1067"
+         landmarkName = "-configureCellDelButton:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/ECUSTmyBuddylistViewController.m"
+         timestampString = "400089765.482881"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "1050"
+         endingLineNumber = "1050"
+         landmarkName = "-handleSwipeFrom:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/WalaBuddycell.h"
+         timestampString = "399968165.270376"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "18"
+         endingLineNumber = "18"
+         landmarkName = "tag"
+         landmarkType = "19">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/ECUSTMessageVC.m"
+         timestampString = "400131492.923361"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "59"
+         endingLineNumber = "59"
+         landmarkName = "-initWithNibName:bundle:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/ECUSTmyBuddylistViewController.m"
+         timestampString = "400089765.482881"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "1094"
+         endingLineNumber = "1094"
+         landmarkName = "-deleteBuddy:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/ECUSTmyBuddylistViewController.m"
+         timestampString = "400089765.482881"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "1072"
+         endingLineNumber = "1072"
+         landmarkName = "-handleCellTapped:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/ECUSTmyBuddylistViewController.m"
+         timestampString = "400089765.482881"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "291"
+         endingLineNumber = "291"
+         landmarkName = "-showTableViews"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/ECUSTmyBuddylistViewController.m"
+         timestampString = "400089765.482881"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "218"
+         endingLineNumber = "218"
+         landmarkName = "-showRequestTableAndAdjustView"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/ECUSTmyBuddylistViewController.m"
+         timestampString = "400089765.482881"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "755"
+         endingLineNumber = "755"
+         landmarkName = "-tableView:viewForHeaderInSection:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/JSBubbleMessageCell.m"
+         timestampString = "400685099.177063"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "253"
+         endingLineNumber = "253"
+         landmarkName = "-setPhoto:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/JSBubbleMessageCell.m"
+         timestampString = "400685099.177063"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "261"
+         endingLineNumber = "261"
+         landmarkName = "-setPhotoWithImage:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/WalaSettings.m"
+         timestampString = "400492725.148299"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "99"
+         endingLineNumber = "99"
+         landmarkName = "-viewForCollapseClickContentViewAtIndex:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/ChatViewController.m"
+         timestampString = "400685697.296942"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "564"
+         endingLineNumber = "564"
+         landmarkName = "-prepareForSegue:sender:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

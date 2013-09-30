@@ -33,6 +33,17 @@
 //  OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
+
+// changeLog:
+/* 1. messageCell, background is needed, so the sizable method is deprecated
+ * 2. textSize is also need to be defined;
+ 
+ 
+ 
+ 
+ 
+ */
+
 #import "JSBubbleView.h"
 #import "JSMessageInputView.h"
 #import "NSString+JSMessagesView.h"
@@ -42,6 +53,9 @@
 #define kPaddingTop 4.0f
 #define kPaddingBottom 8.0f
 #define kBubblePaddingRight 35.0f
+
+
+#define bubbleGroundSize (CGSize){421,234}
 
 @interface JSBubbleView()
 
@@ -90,31 +104,62 @@
 - (void)drawRect:(CGRect)frame
 {
 //    CGSize temp1 = self.frame.size;
-	UIImage *image = [JSBubbleView bubbleImageForStyle:self.style];
-    CGSize bubbleSize = [JSBubbleView bubbleSizeForText:self.text];
-	CGRect bubbleFrame = CGRectMake(([self styleIsOutgoing] ? self.frame.size.width - bubbleSize.width : 0.0f),
-                                    kMarginTop,
-                                    bubbleSize.width,
-                                    bubbleSize.height);
+//	UIImage *image = [JSBubbleView bubbleImageForStyle:self.style];
+//    CGSize bubbleSize = [JSBubbleView bubbleSizeForText:self.text];
+//	CGRect bubbleFrame = CGRectMake(([self styleIsOutgoing] ? self.frame.size.width - bubbleSize.width : 0.0f),
+//                                    kMarginTop,
+//                                    bubbleSize.width,
+//                                    bubbleSize.height);
+//    
+//	[image drawInRect:bubbleFrame];
+//	
+//	CGSize textSize = [JSBubbleView textSizeForText:self.text];
+//	CGFloat textX = (CGFloat)image.leftCapWidth - 3.0f + ([self styleIsOutgoing] ? bubbleFrame.origin.x : 0.0f);
+//    CGRect textFrame = CGRectMake(textX,
+//                                  kPaddingTop + kMarginTop,
+//                                  textSize.width,
+//                                  textSize.height);
+    UIImage *bubbleBackground;
+    CGRect bubbleBackgroundRect;
+    if([self styleIsOutgoing]){
+        bubbleBackgroundRect = CGRectMake(50, 0, 421, 234);
+        bubbleBackground = [UIImage imageNamed:@"msgOutgoing_Chatview"];
+    }
+    else{
+        bubbleBackgroundRect = CGRectMake(50, 0, 421, 234);
+        bubbleBackground = [UIImage imageNamed:@"msgIncoming_Chatview"];
+    }
+    [bubbleBackground drawInRect:bubbleBackgroundRect];
 
+
+    UIImage *image = [JSBubbleView bubbleImageForStyle:self.style];
+//    CGSize bubbleSize = [JSBubbleView bubbleSizeForText:self.text];
+    CGSize bubbleSize = {101, 175};
+//	CGRect bubbleFrame = CGRectMake(([self styleIsOutgoing] ? 160.0f :self.frame.size.width - bubbleSize.width-160.0f),
+//                                    kMarginTop,
+//                                    bubbleSize.width,
+//                                    bubbleSize.height);
+    CGRect bubbleFrame = CGRectMake(([self styleIsOutgoing] ? 300.0f :320.0f),
+                                    25, 101, 175);
+    
 	[image drawInRect:bubbleFrame];
-	
+
 	CGSize textSize = [JSBubbleView textSizeForText:self.text];
 	CGFloat textX = (CGFloat)image.leftCapWidth - 3.0f + ([self styleIsOutgoing] ? bubbleFrame.origin.x : 0.0f);
-    CGRect textFrame = CGRectMake(textX,
-                                  kPaddingTop + kMarginTop,
+    CGRect textFrame = CGRectMake([self styleIsOutgoing] ? 316:336,
+                                  35,
                                   textSize.width,
                                   textSize.height);
-    
+
 	[self.text drawInRect:textFrame
                  withFont:[JSBubbleView font]
             lineBreakMode:NSLineBreakByWordWrapping
                 alignment:NSTextAlignmentLeft];
     
-    if(self.accessoryView){
-        self.accessoryView.center=CGPointMake(bubbleFrame.origin.x-self.accessoryView.bounds.size.width/2-10, bubbleFrame.origin.y+bubbleFrame.size.height/2);
-        [self addSubview:self.accessoryView];
-    }
+//    if(self.accessoryView){
+//        self.accessoryView.center=CGPointMake(bubbleFrame.origin.x-self.accessoryView.bounds.size.width/2-10, bubbleFrame.origin.y+bubbleFrame.size.height/2);
+//        [self addSubview:self.accessoryView];
+//    }
 }
 
 #pragma mark - Bubble view
@@ -130,13 +175,16 @@
 {
     switch (style) {
         case JSBubbleMessageStyleIncomingDefault:
-            return [[UIImage imageNamed:@"messageBubbleGray"] stretchableImageWithLeftCapWidth:23 topCapHeight:15];
+//            return [[UIImage imageNamed:@"messageBubbleGray"] stretchableImageWithLeftCapWidth:23 topCapHeight:15];
+             return [[UIImage imageNamed:@"chat_textbox"] stretchableImageWithLeftCapWidth:15 topCapHeight:15];
         case JSBubbleMessageStyleIncomingSquare:
             return [[UIImage imageNamed:@"bubbleSquareIncoming"] stretchableImageWithLeftCapWidth:25 topCapHeight:15];
             break;
             break;
         case JSBubbleMessageStyleOutgoingDefault:
-            return [[UIImage imageNamed:@"messageBubbleBlue"] stretchableImageWithLeftCapWidth:15 topCapHeight:15];
+//            return [[UIImage imageNamed:@"messageBubbleBlue"] stretchableImageWithLeftCapWidth:15 topCapHeight:15];
+//            break;
+            return [[UIImage imageNamed:@"chat_textbox"] stretchableImageWithLeftCapWidth:15 topCapHeight:15];
             break;
         case JSBubbleMessageStyleOutgoingDefaultGreen:
             return [[UIImage imageNamed:@"messageBubbleGreen"] stretchableImageWithLeftCapWidth:15 topCapHeight:15];
@@ -156,9 +204,22 @@
 }
 
 
+//+ (CGSize)textSizeForText:(NSString *)txt
+//{
+//    CGFloat width = [UIScreen mainScreen].applicationFrame.size.width * 0.65f;
+//    CGFloat height = MAX([JSBubbleView numberOfLinesForMessage:txt],
+//                         [txt numberOfLines]) * [JSMessageInputView textViewLineHeight];
+//    
+//    return [txt sizeWithFont:[JSBubbleView font]
+//           constrainedToSize:CGSizeMake(width, height)
+//               lineBreakMode:NSLineBreakByWordWrapping];
+//}
+
+
+//chages***********************************
 + (CGSize)textSizeForText:(NSString *)txt
 {
-    CGFloat width = [UIScreen mainScreen].applicationFrame.size.width * 0.65f;
+    CGFloat width = 70;
     CGFloat height = MAX([JSBubbleView numberOfLinesForMessage:txt],
                          [txt numberOfLines]) * [JSMessageInputView textViewLineHeight];
     

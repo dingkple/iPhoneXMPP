@@ -17,7 +17,7 @@ extern NSString *const kXMPPmyPassword;
 //extern NSString *const serverText;
 
 
-@interface SettingsViewController : UIViewController 
+@interface SettingsViewController : UIViewController <UITextFieldDelegate>
 {
     UITextField *jidField;
     UITextField *passwordField;
@@ -27,8 +27,8 @@ extern NSString *const kXMPPmyPassword;
 @property (weak, nonatomic) IBOutlet ECUSTLoginAndReg *myLoginAndReg;
 //@property (strong, nonatomic) IBOutlet beforeAllViews *beforeAllViews;
 @property (weak, nonatomic) IBOutlet ECUSTmyLoginVIew *myLoginView;
-@property (nonatomic,strong) IBOutlet UITextField *jidField;
-@property (nonatomic,strong) IBOutlet UITextField *passwordField;
+@property (nonatomic,strong) UITextField *jidField;
+@property (nonatomic,strong) UITextField *passwordField;
 //@property (strong, nonatomic) IBOutlet beforeAllViews *prepareView;
 
 

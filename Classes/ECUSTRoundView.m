@@ -18,6 +18,8 @@
     CGPoint greenPoint;
     CGPoint startPoint;
     CGPoint *currentRound;
+    float radius;
+    float lastScale;
 }
 
 //@property (nonatomic, weak) UIBezierPath bezierPath;
@@ -34,6 +36,19 @@
     if (self) {
         // Initialization code
     }
+    pinchZoom = NO;
+    previousDistance = 0.0f;
+    zoomFactor = 1.0f;
+    radius = 50;
+    
+    UIPinchGestureRecognizer *recognizer;
+    recognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(scale:)];
+    // 不同的 Recognizer 有不同的实体变数
+    // 例如 SwipeGesture 可以指定方向
+    // 而 TapGesture 則可以指定次數recognizer.direction = UISwipeGestureRecognizerDirectionUp
+    [recognizer setDelegate:self];
+    [self addGestureRecognizer:recognizer];
+//    [recognizer release];
     return self;
 }
 
@@ -46,10 +61,10 @@
 }
 */
 #define PI 3.14159265358979323846  
-#define  radius 50
+//#define  radius 50
 
 
-static inline void drawArc(CGContextRef ctx, CGPoint point, float angle_start, float angle_end, UIColor* color) {
+static inline void drawArc(CGContextRef ctx, CGPoint point, float angle_start, float angle_end, UIColor* color, float radius) {
     CGContextMoveToPoint(ctx, point.x, point.y);
     CGContextSetFillColor(ctx, CGColorGetComponents( [color CGColor]));
     CGContextAddArc(ctx, point.x, point.y, radius,  angle_start, angle_end, 0);
@@ -62,6 +77,10 @@ static inline float radians(double degrees) {
     return degrees * PI / 180;
 }
 
+
+- (void)handlePinch{
+    
+}
 
 
 -(CGPoint *) findCentre: (CGPoint) fingerPoint{
@@ -94,58 +113,87 @@ static inline float radians(double degrees) {
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     //保存触摸起始点位置
-    CGPoint point = [[touches anyObject] locationInView:self];
-    startPoint = point;
-    currentRound = [self findCentre:point];
-    
-    //该view置于最前
-    [[self superview] bringSubviewToFront:self];
+    if(touches.count == 1){
+        CGPoint point = [[touches anyObject] locationInView:self];
+        startPoint = point;
+        currentRound = [self findCentre:point];
+        
+        //该view置于最前
+        [[self superview] bringSubviewToFront:self];
+        pinchZoom = NO;
+    }
+
+    else if(event.allTouches.count == 2) {
+        pinchZoom = YES;
+        NSArray *touches = [event.allTouches allObjects];
+        CGPoint pointOne = [[touches objectAtIndex:0] locationInView:self];
+        CGPoint pointTwo = [[touches objectAtIndex:1] locationInView:self];
+        previousDistance = sqrt(pow(pointOne.x - pointTwo.x, 2.0f) +
+                                pow(pointOne.y - pointTwo.y, 2.0f));
+    }
+    else {
+        pinchZoom = NO;
+    }
 }
 
 -(void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
     //计算位移=当前位置-起始位置
-    CGPoint point = [[touches anyObject] locationInView:self];
+    if(touches.count == 1){
+        CGPoint point = [[touches anyObject] locationInView:self];
+        
+        float dx = point.x - startPoint.x;
+        float dy = point.y - startPoint.y;
     
-    float dx = point.x - startPoint.x;
-    float dy = point.y - startPoint.y;
-    
-    
-    
-//    roundToMove->x = roundToMove->x + dx;
-//    roundToMove->y = roundToMove->y + dy;
-    if(currentRound !=nil){
-        currentRound->x = point.x;
-        currentRound->y = point.y;
+        if(currentRound !=nil){
+            currentRound->x = point.x;
+            currentRound->y = point.y;
+        }
+        
+        //计算移动后的view中心点
+        CGPoint newcenter = CGPointMake(self.center.x + dx, self.center.y + dy);
+        
+        
+        /* 限制用户不可将视图托出屏幕 */
+        float halfx = CGRectGetMidX(self.bounds);
+        //x坐标左边界
+        newcenter.x = MAX(halfx, newcenter.x);
+        //    roundToMove->x = MAX(halfx, newcenter.x);
+        //x坐标右边界
+        newcenter.x = MIN(self.superview.bounds.size.width - halfx, newcenter.x);
+        //    roundToMove->x = MIN(self.superview.bounds.size.width - halfx, newcenter.x);
+        
+        //y坐标同理
+        float halfy = CGRectGetMidY(self.bounds);
+        newcenter.y = MAX(halfy, newcenter.y);
+        newcenter.y = MIN(self.superview.bounds.size.height - halfy, newcenter.y);
+        //    roundToMove->y = MAX(halfy, newcenter.y);
+        //     roundToMove->y  = MIN(self.superview.bounds.size.height - halfy, newcenter.y);
+        
+        
+        //移动view
+        //    self.center = newcenter;
+        [self setNeedsDisplay];
     }
 
-    //计算移动后的view中心点
-    CGPoint newcenter = CGPointMake(self.center.x + dx, self.center.y + dy);
     
-    
-    /* 限制用户不可将视图托出屏幕 */
-    float halfx = CGRectGetMidX(self.bounds);
-    //x坐标左边界
-    newcenter.x = MAX(halfx, newcenter.x);
-//    roundToMove->x = MAX(halfx, newcenter.x);
-    //x坐标右边界
-    newcenter.x = MIN(self.superview.bounds.size.width - halfx, newcenter.x);
-//    roundToMove->x = MIN(self.superview.bounds.size.width - halfx, newcenter.x);
-    
-    //y坐标同理
-    float halfy = CGRectGetMidY(self.bounds);
-    newcenter.y = MAX(halfy, newcenter.y);
-    newcenter.y = MIN(self.superview.bounds.size.height - halfy, newcenter.y);
-//    roundToMove->y = MAX(halfy, newcenter.y);
-//     roundToMove->y  = MIN(self.superview.bounds.size.height - halfy, newcenter.y);
-
-    
-    //移动view
-//    self.center = newcenter;
-    [self setNeedsDisplay];
+    else if(YES == pinchZoom && event.allTouches.count == 2) {
+        NSArray *touches = [event.allTouches allObjects];
+        CGPoint pointOne = [[touches objectAtIndex:0] locationInView:self];
+        CGPoint pointTwo = [[touches objectAtIndex:1] locationInView:self];
+        CGFloat distance = sqrt(pow(pointOne.x - pointTwo.x, 2.0f) +
+                                pow(pointOne.y - pointTwo.y, 2.0f));
+        zoomFactor += (distance - previousDistance) / previousDistance;
+        zoomFactor = fabs(zoomFactor);
+        previousDistance = distance;
+//        self.robotLayer.transform = CATransform3DMakeScale(zoomFactor, zoomFactor, 1.0f);
+        radius = distance;
+        [self setNeedsDisplay];
+        
+    }
 }
 
--(void) swipe:(UISwipeGestureRecognizer *)gesture{
+-(void)swipe:(UISwipeGestureRecognizer *)gesture{
     if(gesture.state == UIGestureRecognizerStateChanged ||
        gesture.state == UIGestureRecognizerStateEnded){
 //        CGPoint start = [gesture lo];
@@ -153,16 +201,30 @@ static inline float radians(double degrees) {
     }
 }
 
--(void) myInit{
+//- (void)
+
+
+-(void)scale:(UIPinchGestureRecognizer*)sender {
+    
+    //当手指离开屏幕时,将lastscale设置为1.0
+    if([sender state] == UIGestureRecognizerStateEnded) {
+        lastScale = 1.0;
+        return;
+     }
+    
+    CGFloat scale = 1.0 - (lastScale - [(UIPinchGestureRecognizer*)sender scale]);
+    radius = radius*scale;
+    lastScale = [sender scale];
+    [self setNeedsDisplay];
+    
+}
+
+-(void) myInitWithFrame:(CGRect)frame{
     redPoint.x = 100;
     redPoint.y = 130;
-    bluePoint.x = 150;
-    bluePoint.y = 200;
-    greenPoint.x = 200;
-    greenPoint.y = 250;
-    ECUSTpurpleRoundView *purpleView = [[ECUSTpurpleRoundView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
-    [purpleView setBackgroundColor:[UIColor clearColor]];
-    [self addSubview:purpleView];
+//    ECUSTpurpleRoundView *purpleView = [[ECUSTpurpleRoundView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
+//    [purpleView setBackgroundColor:[UIColor clearColor]];
+//    [self addSubview:purpleView];
     [self setNeedsDisplay];
 }
 
@@ -204,13 +266,10 @@ static inline float radians(double degrees) {
 //    [self.layer addSublayer:self.shapeLayer];
     
     CGContextRef context = UIGraphicsGetCurrentContext();
-//    CGContextClearRect(context, )
+    CGContextClearRect(context, self.frame);
     CGFloat startAngle = radians(0);
     CGFloat endAngle = radians(360);
-    drawArc(context, self->redPoint, startAngle, endAngle, [UIColor redColor]);
-    drawArc(context, self->bluePoint, startAngle, endAngle, [UIColor blueColor]);
-    drawArc(context, self->greenPoint, startAngle, endAngle, [UIColor greenColor]);
-    
+    drawArc(context, self->redPoint, startAngle, endAngle, [UIColor yellowColor],radius);
     
 }
 

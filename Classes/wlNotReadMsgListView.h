@@ -11,3 +11,4 @@
 @interface wlNotReadMsgListView : UIView
 
 @end
+	

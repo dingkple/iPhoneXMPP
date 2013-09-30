@@ -64,8 +64,6 @@
 //    }
     
     
-    
-    
     UIButton *buttonOfTransferFile = [[UIButton alloc]initWithFrame:CGRectMake(100, 100, 30, 30)];
     buttonOfTransferFile.layer.cornerRadius = 10;
     buttonOfTransferFile.tag = 202;
@@ -157,7 +155,7 @@
         _turnSockets = [[NSMutableArray alloc]init];
     }
     [_turnSockets addObject:turnSocket];
-    [turnSocket proceOfferingFile:iq];
+    [turnSocket processOfferingFile:iq];
     [turnSocket startWithDelegate:self delegateQueue:dispatch_get_main_queue()];
 
 }
@@ -167,7 +165,7 @@
     NSArray *candidates = [NSArray arrayWithObjects:@"127.0.0.1",nil];
 //    if()
     [TURNSocket setProxyCandidates:candidates];
-   _turnSocket = [[TURNSocket alloc] initWithStream:[self appDelegate].xmppStream toJID:[XMPPJID jidWithString:@"hios@127.0.0.1/Psi"]];
+   _turnSocket = [[TURNSocket alloc] initWithStream:[self appDelegate].xmppStream toJID:[XMPPJID jidWithString:@"vios2@127.0.0.1/KingtekiMacBook-Pro"]];
 //    NSData *fileData = [[NSData alloc]initWithContentsOfFile:@"buddy.png"];
     NSString *path = [[NSBundle mainBundle] bundlePath];
     NSString *name = [NSString stringWithFormat:@"buddy.png"];

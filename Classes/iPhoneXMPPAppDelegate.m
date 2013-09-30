@@ -533,7 +533,8 @@ NSString const *serverText = @"127.0.0.1";
 - (void)xmppStream:(XMPPStream *)sender didNotAuthenticate:(NSXMLElement *)error
 {
 	DDLogVerbose(@"%@: %@", THIS_FILE, THIS_METHOD);
-    [[self settingsViewController] loginError:self];
+//    [[self settingsViewController] loginError:self];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"failedLogin" object:nil];
 }
 
 - (BOOL)xmppStream:(XMPPStream *)sender didReceiveIQ:(XMPPIQ *)iq
@@ -544,6 +545,7 @@ NSString const *serverText = @"127.0.0.1";
 //        [TURNSocket processOfferedFileAccepted:iq withXmppStream:self.xmppStream];
          NSMutableDictionary *note = [NSMutableDictionary dictionaryWithObject:iq forKey:@"iq"];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"newOfferedFile" object:self userInfo:note];
+        [self startTurnSock:note];
 //        NSArray *candidates = [NSArray arrayWithObjects:@"127.0.0.1",nil];
 //        [TURNSocket setProxyCandidates:candidates];
 //        TURNSocket *turnSocket = [[TURNSocket alloc] initWithStream:[self xmppStream] incomingTURNRequest:iq];
@@ -806,5 +808,66 @@ NSString const *serverText = @"127.0.0.1";
     NSString *documentsDirectory = [paths objectAtIndex:0];
     return [documentsDirectory stringByAppendingPathComponent:@"subscribeRequest.plist"];
 }
+
+
+
+-(void) startTurnSock:(NSMutableDictionary *)note{
+    XMPPIQ *iq = [note objectForKey:@"iq"];
+    NSArray *candidates = [NSArray arrayWithObjects:@"127.0.0.1",nil];
+    [TURNSocket setProxyCandidates:candidates];
+    TURNSocket *turnSocket = [[TURNSocket alloc] initWithStream:[self xmppStream] incomingTURNRequest:iq];
+    if(!_turnSockets){
+        _turnSockets = [[NSMutableArray alloc]init];
+    }
+    [_turnSockets addObject:turnSocket];
+    [turnSocket processOfferingFile:iq];
+    [turnSocket startWithDelegate:self delegateQueue:dispatch_get_main_queue()];
+    
+}
+
+- (void)turnSocket:(TURNSocket *)sender didSucceed:(GCDAsyncSocket *)socket {
+    
+    //    NSData *dataF = [[NSData alloc] initWithContentsOfFile:
+    //                     [[NSBundle mainBundle] pathForResource:@"a1" ofType:@"png"]];
+    //
+    //    [socket writeData:dataF withTimeout:60.0f tag:0];
+    //    NSString *path = [[NSBundle mainBundle] bundlePath];
+    //    NSString *name = [NSString stringWithFormat:@"buddy.png"];
+    //    NSString *finalPath = [path stringByAppendingPathComponent:name];
+    //    NSData *fileData = [NSData dataWithContentsOfFile: finalPath];
+    if(sender.isClient){
+        [socket writeData:sender.fileData withTimeout:10000 tag:0];
+    }
+    else{
+        //        NSMutableData *buffer = [[NSMutableData alloc]init];
+        //        NSMutableString *filePath = [self dataFilePath];
+        //        [filePath appendString:sender.fileName];
+        //        [socket readDataWithTimeout:-1 buffer:sender.fileData bufferOffset:_offSet tag:SOCKS_ACCEPT_FILE];
+        ////        [socket re]
+        //        _offSet = sender.fileData.length+1;
+        [socket readDataToLength:sender.fileSize withTimeout:-1 tag:0];
+        //        [buffer writeToFile:filePath atomically:YES];
+    }
+    
+    
+}
+
+- (void)turnSocketDidRecieveFile: (TURNSocket *)sender{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(
+                                                         NSDocumentDirectory, NSUserDomainMask, YES);
+    NSMutableString *documentsDirectory = [[NSMutableString alloc]initWithString:[[paths objectAtIndex:0] description]];
+    [documentsDirectory appendString:@"/"];
+    [documentsDirectory appendString:sender.fileName];
+    [sender.fileData writeToFile:documentsDirectory atomically:YES];
+}
+
+
+
+- (void)turnSocketDidFail:(TURNSocket *)sender{
+    
+}
+
+
+
 
 @end

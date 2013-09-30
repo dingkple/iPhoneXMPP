@@ -72,16 +72,9 @@
     
     
     
-    CGSize size = self.view.frame.size;
-    
-	CGRect rectBack = CGRectMake(0, 0, 70, 22);
-    UIButton *buttonBack = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    buttonBack.frame = rectBack;
-    [buttonBack setTitle:@"BACK" forState:UIControlStateNormal];
-    buttonBack.backgroundColor = [UIColor clearColor];
-    buttonBack.tag = 2000;
-    [buttonBack addTarget:self action:@selector(backButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:buttonBack];
+    CGSize size = CGSizeMake(480, 320);
+
+
     
     CGRect rectNotReadList = CGRectMake(90, 0, 70, 22);
     UIButton *buttonNotRead = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -90,24 +83,21 @@
     buttonNotRead.backgroundColor = [UIColor clearColor];
     buttonNotRead.tag = 2002;
     [buttonNotRead addTarget:self action:@selector(showOrHideNotReadList:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:buttonNotRead];
+//    [self.view addSubview:buttonNotRead];
+
     
-    CGRect rectUserJidLabel = CGRectMake(180, 0, 150, 22);
-    _labelUserJid = [[UILabel alloc]initWithFrame:rectUserJidLabel];
-    _labelUserJid.backgroundColor = [UIColor clearColor];
-    _labelUserJid.tag = 2003;
-    [self.view addSubview: _labelUserJid];
+   
     
     
     
-    
-    CGRect tableFrame = CGRectMake(0.0f, 44.0f, size.width, size.height - INPUT_HEIGHT-22-20);
+    CGRect tableFrame = CGRectMake(0.0f, 0.f, size.width, size.height);
 	self.tableView = [[UITableView alloc] initWithFrame:tableFrame style:UITableViewStylePlain];
-	self.tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+//	self.tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	self.tableView.dataSource = self;
 	self.tableView.delegate = self;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(textViewResign)];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(textViewResign)];
     [self.tableView addGestureRecognizer:tap];
     
 	[self.view addSubview:self.tableView];
@@ -204,16 +194,79 @@
     bottomButtonReply.backgroundColor = [UIColor clearColor];
     bottomButtonReply.tag = 3005;
     [bottomButtonReply addTarget:self action:@selector(bottomButtonReplyClicked:) forControlEvents:UIControlEventTouchUpInside];
-//    [self.view addSubview:bottomButtonReply];
+    //    [self.view addSubview:bottomButtonReply];
     [bottomButtonBkg addSubview:bottomButtonReply];
     [self.view addSubview: bottomButtonBkg];
     
     
     
+   
+    UIButton *soundMsgBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    soundMsgBtn.frame =  CGRectMake(0,243,70,57);
+    [soundMsgBtn setBackgroundImage:[UIImage imageNamed:@"soundMsgButton_Chatview"] forState:UIControlStateNormal];
+    soundMsgBtn.tag = 4001;
+    [soundMsgBtn addTarget:self action:@selector(bottomButtonReplyClicked:) forControlEvents:UIControlEventTouchUpInside];
+    //    [self.view addSubview:bottomButtonReply];
+    [self.view addSubview: soundMsgBtn];
+    
+    UIButton *animateMsgBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    animateMsgBtn.frame =  CGRectMake(412,243,68,57);
+    [animateMsgBtn setBackgroundImage:[UIImage imageNamed:@"animateMsgBtn_Chatview"] forState:UIControlStateNormal];
+    animateMsgBtn.tag = 4002;
+    [animateMsgBtn addTarget:self action:@selector(bottomButtonReplyClicked:) forControlEvents:UIControlEventTouchUpInside];
+    //    [self.view addSubview:bottomButtonReply];
+    [self.view addSubview: animateMsgBtn];
+    
+    
+    
+    
+    
+    CGRect rectBack = CGRectMake(13, 3, 49, 41);
+    UIButton *buttonBack = [UIButton buttonWithType:UIButtonTypeCustom];
+    buttonBack.frame = rectBack;
+    //    [buttonBack setTitle:@"BACK" forState:UIControlStateNormal];
+    buttonBack.backgroundColor = [UIColor clearColor];
+    buttonBack.tag = 2000;
+    [buttonBack setBackgroundImage:[UIImage imageNamed:@"backbutton_Chatview"] forState:UIControlStateNormal];
+    [buttonBack addTarget:self action:@selector(backButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:buttonBack];
+    
+    
+    UIImageView *topcover = [[UIImageView alloc]initWithFrame:CGRectMake(90, 0, 304, 39)];
+    topcover.image = [UIImage imageNamed:@"topcover_Chatview"];
+    [self.view addSubview:topcover];
 //    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
 //    swipe.direction = UISwipeGestureRecognizerDirectionDown;
 //    swipe.numberOfTouchesRequired = 1;
 //    [self.inputView addGestureRecognizer:swipe];
+    
+    UIButton *topcoverButtonChangeBuddy = [UIButton buttonWithType:UIButtonTypeCustom];
+    topcoverButtonChangeBuddy.frame = CGRectMake(110, 5, 25, 22);
+    [topcoverButtonChangeBuddy setBackgroundImage:[UIImage imageNamed:@"topcoverbuttonChagephoto_Chatview"] forState:UIControlStateNormal];
+    topcoverButtonChangeBuddy.tag = 3001;
+    [self.view addSubview:topcoverButtonChangeBuddy];
+    
+    
+    UIButton *topcoverButtonListMode = [UIButton buttonWithType:UIButtonTypeCustom];
+    topcoverButtonListMode.frame = CGRectMake(310, 7, 24, 16);
+    [topcoverButtonListMode setBackgroundImage:[UIImage imageNamed:@"topcoverbuttonListmode_Chatview"] forState:UIControlStateNormal];
+    topcoverButtonListMode.tag = 3002;
+    [self.view addSubview:topcoverButtonListMode];
+    
+    UIButton *topcoverButtonMore = [UIButton buttonWithType:UIButtonTypeCustom];
+    topcoverButtonMore.frame = CGRectMake(350, 5, 20, 19);
+    [topcoverButtonMore setBackgroundImage:[UIImage imageNamed:@"topcoverbuttonMore_Chatview"] forState:UIControlStateNormal];
+    topcoverButtonMore.tag = 3003;
+    [self.view addSubview:topcoverButtonMore];
+    
+    CGRect rectUserJidLabel = CGRectMake(200, 4, 150, 22);
+    _labelUserJid = [[UILabel alloc]initWithFrame:rectUserJidLabel];
+    _labelUserJid.backgroundColor = [UIColor clearColor];
+    _labelUserJid.tag = 3004;
+    [self.view addSubview: _labelUserJid];
+
+    
+
 }
 
 - (UIButton *)sendButton
@@ -315,6 +368,7 @@
 }
 
 - (void) bottomButtonAttachClicked :(id)sender{
+    [self.delegate bottomButtonAttachClicked:self];
     
 }
 
@@ -380,11 +434,15 @@
                                                        hasTimestamp:hasTimestamp hasPhoto:hasPhoto
                                                     reuseIdentifier:CellID];
         }
+        else {
+            [cell.animationView startAnimating];
+        }
         
         if(hasTimestamp)
             [cell setTimestamp:[self.dataSource timestampForRowAtIndexPath:indexPath]];
         
         [cell setMessage:[self.dataSource textForRowAtIndexPath:indexPath]];
+        [cell setAnimationImage:[self.dataSource imagenameForRowAtIndexPath:indexPath]];
         if(image){
 //            [cell setPhoto:photoUrl];
             [cell setPhotoWithImage:image];
@@ -415,15 +473,20 @@
     return cleaerBkg;
 }
 
+
+
 #pragma mark - Table view delegate
 
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGFloat dateHeight = [self shouldHaveTimestampForRowAtIndexPath:indexPath] ? DATE_LABEL_HEIGHT : 0.0f;
+//    CGFloat dateHeight = [self shouldHaveTimestampForRowAtIndexPath:indexPath] ? DATE_LABEL_HEIGHT : 0.0f;
+//    
+//    return [JSBubbleView cellHeightForText:[self.dataSource textForRowAtIndexPath:indexPath]] + dateHeight;
     
-    return [JSBubbleView cellHeightForText:[self.dataSource textForRowAtIndexPath:indexPath]] + dateHeight;
+//    ********************************************************************
+    return 240;
 }
 
 #pragma mark - Messages view controller

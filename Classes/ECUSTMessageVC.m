@@ -15,6 +15,9 @@
 #import "ChatViewController.h"
 #import "ECUSTbuddyMessageInfoCell.h"
 #import "JSBadgeView.h"
+#import "XMPPMessage.h"
+#import "XMPPMessageArchiving_Contact_CoreDataObject.h"
+#import "XMPPMessageArchiving_Message_CoreDataObject.h"
 
 #define kDidReceiveChat @"didReceiveChat"
 @interface ECUSTMessageVC (){
@@ -39,11 +42,21 @@
 }
 
 
+- (void)awakeFromNib{
+    UITabBarItem *item = [[UITabBarItem alloc] initWithTitle:@"动画聊天" image:nil tag:2];
+    [item setFinishedSelectedImage:[UIImage imageNamed:@"BottomActionbarIcon2_2"]
+       withFinishedUnselectedImage:[UIImage imageNamed:@"BottomActionbarIcon2_1"]];
+    
+    self.tabBarItem = item;
+}
+
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        
     }
     return self;
 }
@@ -53,6 +66,10 @@
     [super viewDidLoad];
     _appDelegate = [self appDelegate];
     self.xmppMsgStorage = [XMPPMessageArchivingCoreDataStorage sharedInstance];
+    
+   
+
+    
 	// Do any additional setup after loading the view.
 }
 
@@ -175,28 +192,43 @@
 - (void)setupView{
     
     
-    UIView *searchBarView = [[UIView alloc] initWithFrame:CGRectMake(50, 0, 390, 40)];
-    searchBarView.backgroundColor = [UIColor clearColor];
-    self.searchMessageBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 390, 40)];
-    self.searchMessageBar.delegate = self;
-    self.searchMessageBar.barStyle = UIBarStyleBlackTranslucent;
-    self.searchMessageBar.autocorrectionType = UITextAutocapitalizationTypeNone;
-    self.searchMessageBar.placeholder = @"search";
-    self.searchMessageBar.keyboardType = UIKeyboardTypeDefault;
-    self.searchMessageBar.showsCancelButton = NO;
-    //    [self.searchBuddyBar sizeToFit];
-//    UIView *searchBarBkg = [self.searchMessageBar.subviews objectAtIndex:0];
-//    UIImageView *bgImg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"searchbar.png"]];
-    [searchBarView addSubview:self.searchMessageBar];
-//    [searchBarBkg addSubview:bgImg];
-    [self.view addSubview:searchBarView];
+//    UIView *searchBarView = [[UIView alloc] initWithFrame:CGRectMake(50, 0, 390, 40)];
+//    searchBarView.backgroundColor = [UIColor clearColor];
+//    self.searchMessageBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 390, 40)];
+//    self.searchMessageBar.delegate = self;
+//    self.searchMessageBar.barStyle = UIBarStyleBlackTranslucent;
+//    self.searchMessageBar.autocorrectionType = UITextAutocapitalizationTypeNone;
+//    self.searchMessageBar.placeholder = @"search";
+//    self.searchMessageBar.keyboardType = UIKeyboardTypeDefault;
+//    self.searchMessageBar.showsCancelButton = NO;
+//    //    [self.searchBuddyBar sizeToFit];
+////    UIView *searchBarBkg = [self.searchMessageBar.subviews objectAtIndex:0];
+////    UIImageView *bgImg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"searchbar.png"]];
+//    [searchBarView addSubview:self.searchMessageBar];
+////    [searchBarBkg addSubview:bgImg];
+//    [self.view addSubview:searchBarView];
+    UIImageView *frameBKG = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 480, 295)];
+    frameBKG.image = [UIImage imageNamed:@"bkg_Mes_Contact"];
+    [self.view addSubview:frameBKG];
     
-    self.messageTableView = [[UITableView alloc] initWithFrame:CGRectMake(50, 0, 386, 320-72) style:UITableViewStylePlain];
+    UIImageView *topCover = [[UIImageView alloc]initWithFrame:CGRectMake(13, 0, 453, 58)];
+    topCover.image = [UIImage imageNamed:@"topCover_Mes_Contact"];
+    [self.view addSubview:topCover];
+    
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"ViewBKG_Mes_Contact"]]];
+    
+    
+    
+    
+    
+    self.messageTableView = [[UITableView alloc] initWithFrame:CGRectMake(25, 58, 451, 295-58) style:UITableViewStylePlain];
     self.messageTableView.backgroundColor = [UIColor whiteColor];
     self.messageTableView.delegate = self;
     self.messageTableView.dataSource = self;
     self.messageTableView.tag = 201;
     [self.messageTableView setRowHeight:50];
+    [self.messageTableView setBackgroundColor:[UIColor clearColor]];
+    self.messageTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.messageTableView];
     
     
@@ -354,9 +386,9 @@
         [cell setPhoto: [UIImage imageWithData:photoData]];
     else
 //        cell.userPhotoView.image = [UIImage imageNamed:@"defaultPerson"];
-        [cell setPhoto:[UIImage imageNamed:@"defaultPerson"]];
+        [cell setPhoto:[UIImage imageNamed:@"userPhotoSample_Mes_Contact"]];
     cell.authoLabel.text = contact.bareJid.user;
-    cell.messageLabel.text = contact.mostRecentMessageBody;
+    cell.messageLabel.text = [XMPPMessageArchiving_Contact_CoreDataObject getMessageStringFromContactBody:contact];
     NSNumber *num = [NSNumber numberWithInteger:contact.notReadNum.integerValue];
     if (num.integerValue > 0 ) {
         NSString *stringOfNum = [[NSString alloc] initWithString: [num stringValue]];
@@ -367,6 +399,8 @@
         [cell.anchor addSubview:badge];
     }
     else cell.messageNotReadLabel.text = @"";
+    cell.msgTimeLabel.text = contact.mostRecentMessageTimestamp.description;
+    cell.contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"messageItemBKG_Mes_Con"]];
 
     return cell;
 
@@ -383,7 +417,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
   
-    return 80;
+    return 58;
 }
 
 

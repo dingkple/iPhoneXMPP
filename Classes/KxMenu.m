@@ -199,7 +199,57 @@ typedef enum {
     
     const CGFloat kMargin = 5.f;
     
-    if (heightPlusArrow < (outerHeight - rectY1)) {
+    
+     if (widthPlusArrow < (outerWidth - rectX1)) {
+        
+        _arrowDirection = KxMenuViewArrowDirectionLeft;
+        CGPoint point = (CGPoint){
+            rectX1,
+            rectYM - heightHalf
+        };
+        
+        if (point.y < kMargin)
+            point.y = kMargin;
+        
+        if ((point.y + contentSize.height + kMargin) > outerHeight)
+            point.y = outerHeight - contentSize.height - kMargin;
+        
+        _arrowPosition = rectYM - point.y;
+        _contentView.frame = (CGRect){kArrowSize, 0, contentSize};
+        
+        self.frame = (CGRect) {
+            
+            point,
+            contentSize.width + kArrowSize,
+            contentSize.height
+        };
+        
+    } else if (widthPlusArrow < rectX0) {
+        
+        _arrowDirection = KxMenuViewArrowDirectionRight;
+        CGPoint point = (CGPoint){
+            rectX0 - widthPlusArrow,
+            rectYM - heightHalf
+        };
+        
+        if (point.y < kMargin)
+            point.y = kMargin;
+        
+        if ((point.y + contentSize.height + 5) > outerHeight)
+            point.y = outerHeight - contentSize.height - kMargin;
+        
+        _arrowPosition = rectYM - point.y;
+        _contentView.frame = (CGRect){CGPointZero, contentSize};
+        
+        self.frame = (CGRect) {
+            
+            point,
+            contentSize.width  + kArrowSize,
+            contentSize.height
+        };
+        
+    }
+    else if (heightPlusArrow < (outerHeight - rectY1)) {
     
         _arrowDirection = KxMenuViewArrowDirectionUp;
         CGPoint point = (CGPoint){
@@ -248,55 +298,7 @@ typedef enum {
             contentSize.height + kArrowSize
         };
         
-    } else if (widthPlusArrow < (outerWidth - rectX1)) {
-        
-        _arrowDirection = KxMenuViewArrowDirectionLeft;
-        CGPoint point = (CGPoint){
-            rectX1,
-            rectYM - heightHalf
-        };
-        
-        if (point.y < kMargin)
-            point.y = kMargin;
-        
-        if ((point.y + contentSize.height + kMargin) > outerHeight)
-            point.y = outerHeight - contentSize.height - kMargin;
-        
-        _arrowPosition = rectYM - point.y;
-        _contentView.frame = (CGRect){kArrowSize, 0, contentSize};
-        
-        self.frame = (CGRect) {
-            
-            point,
-            contentSize.width + kArrowSize,
-            contentSize.height
-        };
-        
-    } else if (widthPlusArrow < rectX0) {
-        
-        _arrowDirection = KxMenuViewArrowDirectionRight;
-        CGPoint point = (CGPoint){
-            rectX0 - widthPlusArrow,
-            rectYM - heightHalf
-        };
-        
-        if (point.y < kMargin)
-            point.y = kMargin;
-        
-        if ((point.y + contentSize.height + 5) > outerHeight)
-            point.y = outerHeight - contentSize.height - kMargin;
-        
-        _arrowPosition = rectYM - point.y;
-        _contentView.frame = (CGRect){CGPointZero, contentSize};
-        
-        self.frame = (CGRect) {
-            
-            point,
-            contentSize.width  + kArrowSize,
-            contentSize.height
-        };
-        
-    } else {
+    }  else {
         
         _arrowDirection = KxMenuViewArrowDirectionNone;
         

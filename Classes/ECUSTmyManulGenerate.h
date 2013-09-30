@@ -10,4 +10,7 @@
 
 @interface ECUSTmyManulGenerate : UIViewController<UIScrollViewDelegate>
 
+- (void)slectAlbum1:(id)sender;
+- (void)slectAlbum2:(id)sender;
+- (void)slectAlbum3:(id)sender;
 @end

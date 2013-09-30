@@ -1,7 +1,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 #import "ECUSTmyRootViewController.h"
-#import "ECUSTServerInfo.h"
+//#import "ECUSTServerInfo.h"
 
 #import "XMPPFramework.h"
 

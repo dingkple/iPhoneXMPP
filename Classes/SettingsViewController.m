@@ -24,6 +24,7 @@ NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
     BOOL *isAllreadyReg;
 }
 
+@property (strong, nonatomic) UIImageView *wrongPasswordView;
 @end
 
 
@@ -35,27 +36,62 @@ NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
 	return (iPhoneXMPPAppDelegate *)[[UIApplication sharedApplication] delegate];
 }
 
+
+- (void)setupViews{
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"back_ground"]]];
+    
+    UIImageView *topbar = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 480, 79)];
+    topbar.image = [UIImage imageNamed:@"topbar"];
+    [self.view addSubview:topbar];
+    
+    CGRect backButtonRect = CGRectMake(5, 28, 49, 41);
+    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    backButton.frame = backButtonRect;
+    [backButton setBackgroundImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
+    [backButton addTarget:self action:@selector(backButtonAction) forControlEvents:UIControlEventTouchUpInside];
+    backButton.tag = 101;
+    [self.view addSubview:backButton];
+    
+    CGRect loginConfirmRect = CGRectMake(375, 20, 101, 54);
+    UIButton *loginConfirm = [UIButton buttonWithType:UIButtonTypeCustom];
+    loginConfirm.frame = loginConfirmRect;
+    [loginConfirm setBackgroundImage:[UIImage imageNamed:@"login_Confirm"] forState:UIControlStateNormal];
+    [loginConfirm addTarget:self action:@selector(done:) forControlEvents:UIControlEventTouchUpInside];
+    loginConfirm.tag = 102;
+    [self.view addSubview:loginConfirm];
+    
+    UIImageView *inputbarBackground = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"inputbar"]];
+    inputbarBackground.frame = CGRectMake(34, 83, 411, 46);
+    [self.view addSubview:inputbarBackground];
+    
+    jidField = [[UITextField alloc]initWithFrame:CGRectMake(63, 95, 150, 36)];
+    jidField.tag = 201;
+    jidField.delegate = self;
+    [self.view addSubview:jidField];
+    
+    passwordField = [[UITextField alloc]initWithFrame:CGRectMake(270, 95, 150, 36)];
+    passwordField.tag = 202;
+    [passwordField setSecureTextEntry:YES];
+    passwordField.delegate = self;
+    [self.view addSubview:passwordField];
+    
+    _wrongPasswordView = [[UIImageView alloc]initWithFrame:CGRectMake(270, 135, 177, 74)];
+    _wrongPasswordView.image = [UIImage imageNamed:@"wrongPassword"];
+    _wrongPasswordView.hidden = YES;
+    [self.view addSubview: _wrongPasswordView];
+    
+    
+    
+}
+
 -(void)viewDidLoad{
     isForLogin = NO;
     isForReg = NO;
     isAllreadyLogin = NO;
     isAllreadyReg = NO;
     
-//    CATransition *animation = [CATransition animation];
-//    
-//    [animation setDelegate:self];
-//    [animation setType:kCATransitionPush];
-//    [animation setSubtype:kCATransitionFromRight];
-//    
-//    [animation setDuration:3];
-//    [animation setTimingFunction:
-//     [CAMediaTimingFunction functionWithName:
-//      kCAMediaTimingFunctionEaseInEaseOut]];
-//    
-//     [self.navigationController.view.layer addAnimation:animation forKey:kCATransition];
-//    [self.view.layer addAnimation:animation forKey:kCATransition];
-//    self.prepareView = _prepareView;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNotification:) name:@"successfulLogin" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNotification:) name:@"failedLogin" object:nil];
     
 }
 
@@ -73,38 +109,8 @@ NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"1.loginAndReg.png"]];
-  
-  //jidField.text = [[NSUserDefaults standardUserDefaults] stringForKey:kXMPPmyJID];
-  //passwordField.text = [[NSUserDefaults standardUserDefaults] stringForKey:kXMPPmyPassword];
-//    CGRect prepareView = CGRectMake(0, 0, 320, 480);
-//    CGRect loginButton = CGRectMake(163, 74, 155, 44);
-//    CGRect regButton = CGRectMake(163, 152, 155, 44);
-//    if(!isAllreadyLogin&&!isAllreadyReg){
-//        CGRect theViewRect = CGRectMake(0, 0, 320, 480);
-////        prepareView = [[beforeAllViews alloc]initWithFrame:theViewRect];
-////        [self.view insertSubview:prepareView aboveSubview:self.view ];
-//    }
-    
-//    CATransition *animation = [CATransition animation];
-//    animation.delegate = self;
-//    animation.duration = kDuration;
-//    animation.timingFunction = UIViewAnimationCurveEaseInOut;
-//    animation.type = kCATransitionFade;
-//    NSInteger prepareViewInteger = [[self.view subviews] indexOfObject:self.myLoginAndReg];
-//    NSInteger loginViewInterger = [[self.view subviews] indexOfObject: self.myLoginView];
-//    [self.view exchangeSubviewAtIndex:loginViewInterger withSubviewAtIndex:prepareViewInteger];
-//    [[self.view layer] addAnimation:animation forKey:@"animation"];
-    
-    
-    
-    /////////////////////////////////////
-    ////////////////////////////////////
-//    jidField.text = @"ios@vg-71c9051cc725";
-//    jidField.text = @"ios@kingtekimacbook-pro.local/ios";
-    jidField.text = @"ios";
-    
-    
+    [self setupViews];
+    jidField.text = @"rios";
     passwordField.text = @"123";
 }
 
@@ -136,59 +142,33 @@ NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
 #pragma mark Actions
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-- (IBAction)done:(id)sender
+- (void)done:(id)sender
 {
-   // NSMutableString *realJID = [[NSMutableString alloc] initWithString:jidField.text];
-    //[realJID appendString:@"cdn-2412b6cf3dc"];
-    //jidField.text = realJID;
+    //disconnect if allready login
+    [self.jidField resignFirstResponder];
+    [self.passwordField resignFirstResponder];
+    
+    
     [[self appDelegate] disconnect];
-    if(isForReg){
-//        NSMutableString *realJID = [[NSMutableString alloc] initWithString:jidField.text];
-//        //    NSError *err;
-//        NSRange range = [realJID rangeOfString:@"@"];
-//        if(range.location == NSNotFound){
-////            [realJID appendString:@"@cdn-2412b6cf3dc"];
-//            
-//        }
-//        jidField.text = realJID;
-//           [self setField:jidField forKey:kXMPPmyJID];
-//        //    [self setField:passwordField forKey:kXMPPmyPassword];
-//        [[self appDelegate] setRegister:YES];
-//        if(jidField.text.length>0&&passwordField.text.length>0){
-//            //        [self dismissViewControllerAnimated:YES completion:NULL];
-//            if([[self appDelegate] anonymousConnect]){
-//                [[[self appDelegate] xmppStream] setMyJID:[XMPPJID jidWithString:jidField.text]];
-//                
-//            }
-//            
-//        }
-//        else {
-//            //        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Login error" message:@"check ur JID and PW" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil];
-//            //        [alert show];
-//            [self loginError:self];
-//        }
-        
+    
+    [[self appDelegate] setRegister:NO];
+    [self setField:jidField forKey:kXMPPmyJID];
+    [self setField:passwordField forKey:kXMPPmyPassword];
+    //    [[self appDelegate ] disconnect];
+    //    [[self appDelegate] connect];
+    //    if([[[self appDelegate] xmppStream] isConnected]){
+    if(jidField.text.length>0&&passwordField.text.length>0){
+        //        [self dismissViewControllerAnimated:YES completion:NULL];ssdssss
+        [[self appDelegate] connect];
     }
-    else{
-        [[self appDelegate] setRegister:NO];
-        [self setField:jidField forKey:kXMPPmyJID];
-        [self setField:passwordField forKey:kXMPPmyPassword];
-        //    [[self appDelegate ] disconnect];
-        //    [[self appDelegate] connect];
-        //    if([[[self appDelegate] xmppStream] isConnected]){
-        if(jidField.text.length>0&&passwordField.text.length>0){
-            //        [self dismissViewControllerAnimated:YES completion:NULL];
-            [[self appDelegate] connect];
-        }
-        else {
-            //        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Login error" message:@"check ur JID and PW" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil];
-            //        [alert show];
-            [self loginError:self];
-            [[self appDelegate] disconnect];
-        }
+    else {
+        //        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Login error" message:@"check ur JID and PW" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil];
+        //        [alert show];
+        [self loginError:self];
+        [[self appDelegate] disconnect];
+    }
 
-    }
-    }
+}
 
 -(IBAction)registerXMPP:(id)sender{
     NSMutableString *realJID = [[NSMutableString alloc] initWithString:jidField.text];
@@ -221,10 +201,15 @@ NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
   [self done:sender];
 }
 
--(IBAction)loginError:(id)sender{
-    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Login error" message:@"check ur JID and PW" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil];
-    [alert show];
+- (void)loginError:(id)sender{
+//    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Login error" message:@"check ur JID and PW" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil];
+//    [alert show];
+    _wrongPasswordView.hidden = NO;
+    
+}
 
+- (void)backButtonAction{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
@@ -264,9 +249,17 @@ NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
 }
 
 -(void)receiveNotification:(NSNotification*)note{
-    UIAlertView* noteView = [[UIAlertView alloc] initWithTitle:nil message:@"SettingView receive a noti for successlogin!!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [noteView show];
-    [self performSegueWithIdentifier:@"successfulLogin" sender:self];
+//    UIAlertView* noteView = [[UIAlertView alloc] initWithTitle:nil message:@"SettingView receive a noti for successlogin!!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//    [noteView show];
+    
+    if([note.name isEqualToString:@"successfulLogin"]){
+      [self performSegueWithIdentifier:@"successfulLogin" sender:self];  
+    }
+    
+    if([note.name isEqualToString:@"failedLogin"]){
+        _wrongPasswordView.hidden = NO;
+    }
+    
 //    [noteView release];
 }
 
@@ -278,6 +271,16 @@ NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
 - (IBAction)backgroundTouched:(id)sender {
     [self.jidField resignFirstResponder];
     [self.passwordField resignFirstResponder];
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    _wrongPasswordView.hidden = YES;
 }
 
 

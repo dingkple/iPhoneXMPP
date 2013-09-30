@@ -54,13 +54,14 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        hortable = [[UITableView alloc]initWithFrame:CGRectMake(100, -90, 140, 250) style:UITableViewStylePlain];
+        hortable = [[UITableView alloc]initWithFrame:CGRectMake(200, -170, 55, 390) style:UITableViewStylePlain];
         hortable.delegate = self;
         hortable.dataSource = self;
         hortable.transform = CGAffineTransformMakeRotation(M_PI / 2 * 3);
         hortable.showsHorizontalScrollIndicator = NO;
         hortable.showsVerticalScrollIndicator = YES;
-        hortable.separatorStyle = UITableViewCellSeparatorStyleNone;
+        hortable.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+        hortable.backgroundColor = [UIColor clearColor];
 		[self addSubview:hortable];
 //        _allRequestsArray = [[NSMutableArray alloc]initWithObjects:@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",nil];
 //        [self readAllRequests];
@@ -74,7 +75,8 @@
 {
 //        return  [self count];
 //    [self readAllRequests];
-    return [self.allRequestsArray count];
+    NSInteger num = [self.allRequestsArray count];
+    return num;
  }
 
 
@@ -85,10 +87,17 @@
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil){
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        cell.transform = CGAffineTransformMakeRotation(M_PI/2);
-        [[cell textLabel] setText:[self.allRequestsArray objectAtIndex:indexPath.row]];
-        cell.textLabel.numberOfLines = 0;
-        cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
+        cell.transform = CGAffineTransformMakeRotation( M_PI/2);
+//        [[cell textLabel] setText:[self.allRequestsArray objectAtIndex:indexPath.row]];
+//        cell.textLabel.numberOfLines = 0;
+//        cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//        cell.contentView.backgroundColor = [UIColor yellowColor];
+        UIImageView *userHead = [[UIImageView alloc]initWithFrame:CGRectMake(5, 5, 45, 45)];
+        userHead.image = [UIImage imageNamed: @"4.3HeadImage.png"];
+        [cell.contentView addSubview:userHead];
+        
+        
 		
 	}
 	return cell;
@@ -114,6 +123,10 @@
 {
     [super setSelected:selected animated:animated];
     // Configure the view for the selected state
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
 }
 
 

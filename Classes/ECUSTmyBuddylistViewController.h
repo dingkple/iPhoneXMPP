@@ -18,7 +18,7 @@
 //    MJPopupViewAnimationFade
 //} MJPopupViewAnimation;
 
-@interface ECUSTmyBuddylistViewController : UIViewController<UITableViewDataSource, UITableViewDelegate,NSFetchedResultsControllerDelegate,UISearchBarDelegate,UISearchDisplayDelegate>{
+@interface ECUSTmyBuddylistViewController : UIViewController<UITableViewDataSource, UITableViewDelegate,NSFetchedResultsControllerDelegate,UISearchBarDelegate,UISearchDisplayDelegate, UITextFieldDelegate>{
     NSFetchedResultsController *fetchedResultsController;
 }
 - (IBAction)disconnect:(id)sender;
