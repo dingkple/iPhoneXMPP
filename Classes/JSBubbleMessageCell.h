@@ -35,6 +35,7 @@
 
 #import <UIKit/UIKit.h>
 #import "JSBubbleView.h"
+#import <AVFoundation/AVFoundation.h>
 
 #define DATE_LABEL_HEIGHT 12.0f
 
@@ -42,6 +43,9 @@
 @property (strong, nonatomic) UIImageView *animationView;
 
 @property (strong, nonatomic) NSString *imageNameStr;
+
+@property (strong, nonatomic) NSURL *soundFileUrl;
+@property (strong, nonatomic) AVAudioPlayer *avPlay;
 
 #pragma mark - Initialization
 - (id)initWithBubbleStyle:(JSBubbleMessageStyle)style

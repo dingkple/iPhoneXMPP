@@ -14,15 +14,26 @@
 
 #import "UIViewController+MJPopupViewController.h"
 
+#import "iPhoneXMPPAppDelegate.h"
+
+#define SOCKS_ACCEPT_FILE    0
+
 @interface WalaNewMsgVC ()
 
 @property (strong, nonatomic) UIView *msgView;
 @property (strong, nonatomic) NSDate *startRecTime;
 @property (strong, nonatomic) NSDate *stopRecTime;
+@property (strong, nonatomic) NSString *soundFileName;
+@property (strong, nonatomic) NSURL *soundFileUrl;
 
 @end
 
 @implementation WalaNewMsgVC
+
+- (iPhoneXMPPAppDelegate *)appDelegate
+{
+	return (iPhoneXMPPAppDelegate *)[[UIApplication sharedApplication] delegate];
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -150,6 +161,8 @@
     [bkgBtn addTarget:self action:@selector(endEditing:) forControlEvents:UIControlEventTouchUpInside];
     [_aWalaTextEditVC.view insertSubview:bkgBtn atIndex:1];
     [self presentPopupViewController:_aWalaTextEditVC animationType:MJPopupViewAnimationFade];
+    
+    
 }
 
 - (void)startRecNewSoundMsg:(id)sender{
@@ -184,6 +197,26 @@
     
 }
 
+- (NSURL *)setSoundFileUrl{
+    NSString *strUrl = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    //  get a name for the sound file
+    NSDate *filenameByDate = [NSDate date];
+    _soundFileName = [self stringFromDate:filenameByDate];
+    _soundFileUrl = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/%@lll.aac", strUrl,_soundFileName]];
+    return _soundFileUrl;
+}
+
+- (NSString *)stringFromDate:(NSDate *)date{
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+
+    //zzz表示时区，zzz可以删除，这样返回的日期字符将不包含时区信息。
+    
+    [dateFormatter setDateFormat:@"yyyyMMdd HHmmss"];
+    NSString *destDateString = [dateFormatter stringFromDate:date];
+    return destDateString;
+    
+}
 
 - (void)audio
 {
@@ -200,13 +233,12 @@
     //录音的质量
     [recordSetting setValue:[NSNumber numberWithInt:AVAudioQualityHigh] forKey:AVEncoderAudioQualityKey];
     
-    NSString *strUrl = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-    NSURL *url = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/lll.aac", strUrl]];
-    urlPlay = url;
+    [self setSoundFileUrl];
+    urlPlay = _soundFileUrl;
     
     NSError *error;
     //初始化
-    recorder = [[AVAudioRecorder alloc]initWithURL:url settings:recordSetting error:&error];
+    recorder = [[AVAudioRecorder alloc]initWithURL:_soundFileUrl settings:recordSetting error:&error];
     //开启音量检测
     recorder.meteringEnabled = YES;
     recorder.delegate = self;
@@ -334,12 +366,41 @@
     //    [self.sourceViewController.arrayChats removeAllObjects];
     //    [[self.sourceViewController fetchedMessageController]performFetch:nil];
     NSString *inputText = [self.textview.text trimWhitespace];
+    if(inputText == nil){
+        inputText = @"";
+    }
     NSMutableString *newInputText = [[NSMutableString alloc]initWithString:inputText];
     [self addImagename:self.imageNameStr toNSString:newInputText];
-    NSMutableDictionary *note = [NSMutableDictionary dictionaryWithObject:newInputText forKey:@"InputText"];
+//    NSMutableDictionary *note = [NSMutableDictionary dictionaryWithObject:newInputText forKey:@"InputText"];
+    
+    NSMutableDictionary *note;
+    if(self.soundFileName != nil){
+        note = [NSMutableDictionary dictionaryWithObject:self.soundFileName forKey:@"MessageBody"];
+        NSArray *candidates = [NSArray arrayWithObjects:@"127.0.0.1",nil];
+        //    if()
+        [TURNSocket setProxyCandidates:candidates];
+        _turnSocket = [[TURNSocket alloc] initWithStream:[self appDelegate].xmppStream toJID:[XMPPJID jidWithString:_chatJID.bare resource:@"Psi"]];
+        //    NSData *fileData = [[NSData alloc]initWithContentsOfFile:@"buddy.png"];
+        NSString *name = self.soundFileName;
+        NSData *fileData = [NSData dataWithContentsOfURL: _soundFileUrl];
+        //    UIImage *aimage = [UIImage imageWithData: imageData];
+        //    [_turnSocket sendOfferingInfoWithName:@"zebra" andData:fileData To:[XMPPJID jidWithString:@"hios@127.0.0.1/Psi"]];
+        //    [objTURNsocket startWithDelegate:self delegateQueue:dispatch_get_main_queue()];
+        [_turnSocket setFileData:[fileData copy]];
+        [_turnSocket setFileName:name];
+        [_turnSocket setFileSize:fileData.length];
+        [_turnSocket startWithDelegate:self delegateQueue:dispatch_get_main_queue()];
+    }
+    else{
+        note = [NSMutableDictionary dictionaryWithObject:newInputText forKey:@"MessageBody"];
+    }
+
+    
     [note setObject:@"imaURL" forKey:@"imgURL"];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"newInputText" object:nil userInfo:note];
     [self.navigationController popToViewController:self.sourceViewController animated:YES];
+    
+   
 }
 
 - (NSMutableString *)addImagename:(NSString *)imagename toNSString:(NSMutableString *)mutableString{
@@ -354,5 +415,36 @@
     }
      return mutableString;
 }
+
+
+- (void)turnSocket:(TURNSocket *)sender didSucceed:(GCDAsyncSocket *)socket {
+    
+    
+    if(sender.isClient){
+        [socket writeData:sender.fileData withTimeout:10000 tag:0];
+    }
+    else{
+        [socket readDataToLength:sender.fileSize withTimeout:-1 tag:SOCKS_ACCEPT_FILE];
+    }
+    
+    
+}
+
+- (void)turnSocketDidRecieveFile: (TURNSocket *)sender{
+    NSString *filePath = [_soundFileUrl description];
+    [sender.fileData writeToFile:filePath atomically:YES];
+    //    [self loadImage];
+    [self.view setNeedsDisplay];
+}
+
+
+
+- (void)turnSocketDidFail:(TURNSocket *)sender{
+    _turnSocket = nil;
+    
+}
+
+
+
 
 @end

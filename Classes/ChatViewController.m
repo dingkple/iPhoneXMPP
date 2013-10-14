@@ -106,8 +106,7 @@
 
 - (void) recieveChatInputText:(NSNotification *)note{
     if([note.name isEqualToString:@"newInputText"]){
-        NSString *inputText = [[note userInfo] objectForKey:@"InputText"];
-        
+        NSString *inputText = [[note userInfo] objectForKey:@"MessageBody"];
         [self sendPressedwithText:inputText];
     }
     
@@ -249,7 +248,16 @@
 //            [self.arrayChats addObject:message];
 //        }
         
-        XMPPMessage *newmsg = [[XMPPMessage alloc] initWithType:@"chat" to:self.chatUserJid];
+//        send sound message:
+//        ***********************
+//        <message from="rios@127.0.0.1/ios" type="chat" to="vios@127.0.0.1" id="sound">
+//        <body>sound file name here</body>
+//        </message>
+//        XMPPMessage *newmsg = [[XMPPMessage alloc] initWithType:@"chat" to:self.chatUserJid elementID:@"sound"];
+        
+        
+        
+        XMPPMessage *newmsg = [[XMPPMessage alloc] initWithType:@"chat" to:self.chatUserJid elementID:@"sound"];
         [newmsg addBody:messageStr];
         [_appDelegate.xmppStream sendElement:newmsg];
         [self.xmppMsgStorage archiveMessage:newmsg outgoing:YES xmppStream:[_appDelegate xmppStream]];
@@ -258,6 +266,8 @@
 //        [self.inputView adjustTextViewHeightBy:0];
         [self readChatFromFetchController];
         [self.tableView reloadData];
+        
+        
     }
 }
 

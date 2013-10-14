@@ -77,7 +77,7 @@
 #pragma mark Views
 
 - (void)setupViews{
-    CGRect rectBack = CGRectMake(0, 0, 70, 22);
+    CGRect rectBack = CGRectMake(0, 50, 70, 22);
     UIButton *buttonBack = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     buttonBack.frame = rectBack;
     [buttonBack setTitle:@"BACK" forState:UIControlStateNormal];

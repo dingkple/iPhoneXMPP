@@ -11,7 +11,7 @@
 #import "TURNSocket.h"
 
 
-@interface myFileViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+@interface myFileViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, TURNSocketDelegate>
 @property (strong, nonatomic) XMPPJID *userJID;
 @property (strong, nonatomic) TURNSocket *turnSocket;
 @end

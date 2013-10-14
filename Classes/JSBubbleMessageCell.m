@@ -38,6 +38,7 @@
 #import "UIImageView+AFNetworking.h"
 #import <QuartzCore/QuartzCore.h>
 
+
 #define photoEdgeInsets (UIEdgeInsets){2,4,2,4}
 #define photoSize (CGSize){45,45}
 #define bubbleSize (CGSize){421,234}
@@ -63,6 +64,9 @@
 
 
 @implementation JSBubbleMessageCell
+
+@synthesize soundFileUrl;
+
 
 #pragma mark - Initialization
 
@@ -178,6 +182,20 @@
     
     [self.contentView addSubview:self.bubbleView];
     [self.contentView sendSubviewToBack:self.bubbleView];
+    
+    UIButton *soundPlayBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    soundPlayBtn.titleLabel.text = @"play";
+    if(self.style==JSBubbleMessageStyleIncomingDefault||self.style==JSBubbleMessageStyleIncomingSquare){
+        soundPlayBtn.frame = CGRectMake(130, 185, 40, 20);
+        
+    }
+    else{
+        soundPlayBtn.frame = CGRectMake(150, 185, 40, 20);
+    }
+    [soundPlayBtn addTarget:self action:@selector(playSound:) forControlEvents:UIControlEventTouchUpInside];
+    [soundPlayBtn setBackgroundColor:[UIColor yellowColor]];
+    [self.contentView addSubview:soundPlayBtn];
+   
 }
 
 - (id)initWithBubbleStyle:(JSBubbleMessageStyle)style hasTimestamp:(BOOL)hasTimestamp hasPhoto:(BOOL) hasPhoto reuseIdentifier:(NSString *)reuseIdentifier
@@ -275,11 +293,26 @@
                                                               timeStyle:NSDateFormatterShortStyle];
 }
 
-- (void) addAccessoryView:(UIView*) view
+- (void)addAccessoryView:(UIView*) view
 {
     self.bubbleView.accessoryView=view;
 }
 
+- (void)setSoundFileUrl:(NSURL *)aSoundFileUrl{
+   
+    NSData *filedata = [[NSData alloc]initWithContentsOfURL:self.soundFileUrl];
+    AVAudioPlayer *newPlayer = [[AVAudioPlayer alloc]initWithContentsOfURL:aSoundFileUrl error:nil];
+    _avPlay = newPlayer;
+   
+}
+
+- (void)playSound:(id)sender{
+
+    if(_avPlay){
+        [_avPlay play];
+    }
+    
+}
  
 
 @end

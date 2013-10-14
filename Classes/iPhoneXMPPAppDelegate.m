@@ -599,37 +599,22 @@ NSString const *serverText = @"127.0.0.1";
 	if ([message isChatMessageWithBody])
 	{
         [self.arrayChats addObject:message];
-		XMPPUserCoreDataStorageObject *user = [xmppRosterStorage userForJID:[message from]
-		                                                         xmppStream:xmppStream
-		                                               managedObjectContext:[self managedObjectContext_roster]];
+//		XMPPUserCoreDataStorageObject *user = [xmppRosterStorage userForJID:[message from]
+//		                                                         xmppStream:xmppStream
+//		                                               managedObjectContext:[self managedObjectContext_roster]];
         self.xmppMessageStorage = [XMPPMessageArchivingCoreDataStorage sharedInstance];
 		[self.xmppMessageStorage archiveMessage:message outgoing:NO xmppStream:self.xmppStream];
         [self.xmppMessageStorage updateContactWithJID:message.from andSetMessageNotReadZero:NO streamBareJid:self.xmppStream.myJID];
-//		NSString *body = [[message elementForName:@"body"] stringValue];
-//		NSString *displayName = [user displayName];
         NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObject:message forKey:@"message"];
         [[NSNotificationCenter defaultCenter] postNotificationName:kDidReceiveChat
                        object:self userInfo:userInfo];
-
-//		if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive)
-//		{
-//			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:displayName
-//															  message:body 
-//															 delegate:nil 
-//													cancelButtonTitle:@"Ok" 
-//													otherButtonTitles:nil];
-//			[alertView show];
-//		}
-//		else
-//		{
-//			// We are not active, so use a local notification instead
-//			UILocalNotification *localNotification = [[UILocalNotification alloc] init];
-//			localNotification.alertAction = @"Ok";
-//			localNotification.alertBody = [NSString stringWithFormat:@"From: %@\n\n%@",displayName,body];
-//
-//			[[UIApplication sharedApplication] presentLocalNotificationNow:localNotification];
-//		}
 	}
+    
+    else if([message isSoundMessageWithBody])
+    {
+        
+    }
+    
 }
 
 //- (void)xmppStream:(XMPPStream *)sender didReceivePresence:(XMPPPresence *)presence

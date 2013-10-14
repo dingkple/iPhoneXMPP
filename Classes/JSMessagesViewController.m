@@ -38,6 +38,7 @@
 #import "UIView+AnimationOptionsForCurve.h"
 #import "UIColor+JSMessagesView.h"
 #import "ECUSTMessageVC.h"
+#import <AVFoundation/AVFoundation.h>
 
 
 #define INPUT_HEIGHT 40.0f
@@ -146,36 +147,36 @@
     CGRect bottomBkg = CGRectMake(10, 260, size.width-20, 50);
     UIView *bottomButtonBkg = [[UIView alloc]initWithFrame:bottomBkg];
     
-    CGRect button1Rect = CGRectMake(15,5,50,30);
-    UIButton *bottomButtonSwitch = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    bottomButtonSwitch.frame = button1Rect;
-    [bottomButtonSwitch setTitle:@"state" forState:UIControlStateNormal];
-    bottomButtonSwitch.backgroundColor = [UIColor clearColor];
-    bottomButtonSwitch.tag = 3001;
-    [bottomButtonSwitch addTarget:self action:@selector(bottomButtonSwitchClicked:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:bottomButtonSwitch];
-    [bottomButtonBkg addSubview:bottomButtonSwitch];
-    
-    
-    CGRect button2Rect = CGRectMake(80,5,80,30);
-    UIButton *bottomButtonNewMsg = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    bottomButtonNewMsg.frame = button2Rect;
-    [bottomButtonNewMsg setTitle:@"new" forState:UIControlStateNormal];
-    bottomButtonNewMsg.backgroundColor = [UIColor clearColor];
-    bottomButtonNewMsg.tag = 3002;
-    [bottomButtonNewMsg addTarget:self action:@selector(bottomButtonNewMsgClicked:) forControlEvents:UIControlEventTouchUpInside];
-//    [self.view addSubview:bottomButtonNewMsg];
-    [bottomButtonBkg addSubview:bottomButtonNewMsg];
-    
-    CGRect button3Rect = CGRectMake(175,5,80,30);
-    UIButton *bottomButtonSoundInput = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    bottomButtonSoundInput.frame= button3Rect;
-    [bottomButtonSoundInput setTitle:@"sound" forState:UIControlStateNormal];
-    bottomButtonSoundInput.backgroundColor = [UIColor clearColor];
-    bottomButtonSoundInput.tag = 3003;
-    [bottomButtonSoundInput addTarget:self action:@selector(bottomButtonSoundInputClicked:) forControlEvents:UIControlEventTouchUpInside];
-//    [self.view addSubview:bottomButtonSoundInput];
-    [bottomButtonBkg addSubview:bottomButtonSoundInput];
+//    CGRect button1Rect = CGRectMake(15,5,50,30);
+//    UIButton *bottomButtonSwitch = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//    bottomButtonSwitch.frame = button1Rect;
+//    [bottomButtonSwitch setTitle:@"state" forState:UIControlStateNormal];
+//    bottomButtonSwitch.backgroundColor = [UIColor clearColor];
+//    bottomButtonSwitch.tag = 3001;
+//    [bottomButtonSwitch addTarget:self action:@selector(bottomButtonSwitchClicked:) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:bottomButtonSwitch];
+//    [bottomButtonBkg addSubview:bottomButtonSwitch];
+//    
+//    
+//    CGRect button2Rect = CGRectMake(80,5,80,30);
+//    UIButton *bottomButtonNewMsg = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//    bottomButtonNewMsg.frame = button2Rect;
+//    [bottomButtonNewMsg setTitle:@"new" forState:UIControlStateNormal];
+//    bottomButtonNewMsg.backgroundColor = [UIColor clearColor];
+//    bottomButtonNewMsg.tag = 3002;
+//    [bottomButtonNewMsg addTarget:self action:@selector(bottomButtonNewMsgClicked:) forControlEvents:UIControlEventTouchUpInside];
+////    [self.view addSubview:bottomButtonNewMsg];
+//    [bottomButtonBkg addSubview:bottomButtonNewMsg];
+//    
+//    CGRect button3Rect = CGRectMake(175,5,80,30);
+//    UIButton *bottomButtonSoundInput = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//    bottomButtonSoundInput.frame= button3Rect;
+//    [bottomButtonSoundInput setTitle:@"sound" forState:UIControlStateNormal];
+//    bottomButtonSoundInput.backgroundColor = [UIColor clearColor];
+//    bottomButtonSoundInput.tag = 3003;
+//    [bottomButtonSoundInput addTarget:self action:@selector(bottomButtonSoundInputClicked:) forControlEvents:UIControlEventTouchUpInside];
+////    [self.view addSubview:bottomButtonSoundInput];
+//    [bottomButtonBkg addSubview:bottomButtonSoundInput];
     
     CGRect button4Rect = CGRectMake(270,5,80,30);
     UIButton *bottomButtonAttach = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -443,6 +444,7 @@
         
         [cell setMessage:[self.dataSource textForRowAtIndexPath:indexPath]];
         [cell setAnimationImage:[self.dataSource imagenameForRowAtIndexPath:indexPath]];
+        [cell setSoundFileUrl:[self getSoundUrl:[self.dataSource textForRowAtIndexPath:indexPath]]];
         if(image){
 //            [cell setPhoto:photoUrl];
             [cell setPhotoWithImage:image];
@@ -654,4 +656,16 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (NSURL *)getSoundUrl:(NSString *)soundFileName{
+    NSString *strUrl = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    //  get a name for the sound file
+    NSMutableString *soundFileStr = [[NSMutableString alloc]initWithString:strUrl];
+    [soundFileStr appendString:@"/"];
+    [soundFileStr appendString:soundFileName];
+    [soundFileStr appendString:@"lll.aac"];
+    NSURL *soundFileUrl = [NSURL fileURLWithPath:soundFileStr];
+   
+    return soundFileUrl;
+
+}
 @end

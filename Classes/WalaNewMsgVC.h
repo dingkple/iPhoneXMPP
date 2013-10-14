@@ -14,14 +14,16 @@
 #import "WalaTextEditVC.h"
 #import <AVFoundation/AVFoundation.h>
 #import <AudioToolbox/AudioToolbox.h>
+#import "TURNSocket.h"
 
 
 
-@interface WalaNewMsgVC : UIViewController<UITextViewDelegate, textEditing, AVAudioPlayerDelegate,AVAudioRecorderDelegate>{
+
+@interface WalaNewMsgVC : UIViewController<UITextViewDelegate, textEditing, AVAudioPlayerDelegate,AVAudioRecorderDelegate, TURNSocketDelegate>{
     NSURL *recordedFile;
     AVAudioPlayer *player;
     AVAudioRecorder *recorder;
-    BOOL isRecording;
+//    BOOL isRecording;
     NSTimer *timer;
     NSURL *urlPlay;
 }
@@ -38,5 +40,7 @@
 @property (strong, nonatomic)NSString *imageNameStr;
 
 @property (strong, nonatomic)UIImageView *imageView;
+
+@property (strong, nonatomic) TURNSocket *turnSocket;
 
 @end
