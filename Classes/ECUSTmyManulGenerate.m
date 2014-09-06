@@ -37,6 +37,9 @@
     return self;
 }
 
+- (BOOL)prefersStatusBarHidden{
+    return YES;
+}
 
 - (void)setupViews{
     
@@ -47,23 +50,41 @@
     UIImage *pressedColorImg = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"backGround_ManGenerate.png"]]];
     
-    CGRect leftButtonsRect = CGRectMake(0, 0, 60, 296);
-    UIView *leftButtons = [[ UIView alloc]initWithFrame: leftButtonsRect];
-    UIImage *leftImage = [UIImage imageNamed:@"leftButtons"];
-    [self.view addSubview:leftButtons];
-    [leftButtons setBackgroundColor:[UIColor colorWithPatternImage:leftImage]];
+    CGRect leftBkgRect = CGRectMake(0, 0, 82, 320);
+    CGRect rightBkgRect = CGRectMake(480-82, 0, 82, 320);
+    UIImage *leftBkgImg = [UIImage imageNamed:@"leftBackground_MGe"];
+    UIImage *rightBkgImg = [UIImage imageNamed:@"rightBackground_MGe"];
+    UIImageView *leftBkgImgview = [[UIImageView alloc]initWithImage:leftBkgImg];
+    UIImageView *rightBkgImgview = [[UIImageView alloc]initWithImage:rightBkgImg];
+    leftBkgImgview.frame = leftBkgRect;
+    rightBkgImgview.frame = rightBkgRect;
+    [self.view addSubview:leftBkgImgview];
+    [self.view addSubview:rightBkgImgview];
+    
+    
+    
+    
+    
+//    CGRect leftButtonsRect = CGRectMake(0, 0, 60, 296);
+//    UIView *leftButtons = [[ UIView alloc]initWithFrame: leftButtonsRect];
+//    UIImage *leftImage = [UIImage imageNamed:@"leftButtons"];
+//    [self.view addSubview:leftButtons];
+//    [leftButtons setBackgroundColor:[UIColor colorWithPatternImage:leftImage]];
     for(int i=0 ; i<4; i++){
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         button.tag = 100+i;
         if(i<3){
-            button.frame = CGRectMake(0, 75*i, 60, 75);
+            button.frame = CGRectMake(5, 75*i, 40, 48);
         }
         else
-            button.frame = CGRectMake(0, 75*i, 60, 81);
+            button.frame = CGRectMake(0, 75*i, 40, 48);
         
         switch (i){
-            case (0): [button addTarget:self action:@selector(cancel) forControlEvents:UIControlEventTouchUpInside];break;
+            case (0): [button addTarget:self action:@selector(cancel) forControlEvents:UIControlEventTouchUpInside];
+                [button setBackgroundImage:[UIImage imageNamed:@"cancenAll_MGe"] forState:UIControlStateNormal];
+                break;
             case (1): [button addTarget:self action:@selector(addAlbum) forControlEvents:UIControlEventTouchUpInside];break;
             case (2): [button addTarget:self action:@selector(addBubble) forControlEvents:UIControlEventTouchUpInside];break;
             case (3): [button addTarget:self action:@selector(showAlbumNavi:) forControlEvents:UIControlEventTouchUpInside]; break;

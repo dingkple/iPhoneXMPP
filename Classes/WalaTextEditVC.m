@@ -44,15 +44,15 @@
     CGSize size = CGSizeMake(100, 100);
     
     
-    CGRect inputFrame = CGRectMake(self.view.frame.size.width/2 - 150, 30.f , 300.f, 150.f);
+    CGRect inputFrame = CGRectMake(self.view.frame.size.width/2 - 100.f, 30.f , 200.f, 150.f);
     self.inputView = [[UITextView alloc]initWithFrame:inputFrame];
     self.inputView.delegate = self.rootVC;
     self.inputView.backgroundColor = [UIColor yellowColor];
     [self.view addSubview:self.inputView];
     
     UIButton *confirmBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    confirmBtn.backgroundColor = [UIColor greenColor];
-    confirmBtn.titleLabel.text = @"DONE";
+    confirmBtn.backgroundColor = [UIColor whiteColor];
+    [confirmBtn setTitle:@"Done" forState:UIControlStateNormal];
     [confirmBtn.titleLabel setTextColor:[UIColor blackColor]];
     confirmBtn.frame = CGRectMake(self.view.frame.size.width/2 - 30, 190, 60, 30);
     [confirmBtn addTarget:self action:@selector(confirmEditing) forControlEvents:UIControlEventTouchUpInside];

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>564CA30A-0B64-419D-AFE7-94A59F44C9A9</string>
+	<key>IDESourceControlProjectName</key>
+	<string>iPhoneXMPP</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>AA17F73B-A6C4-4506-B8DD-ED46DA51708F</key>
+		<string>https://github.com/dingkple/iPhoneXMPP.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>iPhoneXMPP.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>AA17F73B-A6C4-4506-B8DD-ED46DA51708F</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/dingkple/iPhoneXMPP.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>AA17F73B-A6C4-4506-B8DD-ED46DA51708F</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>AA17F73B-A6C4-4506-B8DD-ED46DA51708F</string>
+			<key>IDESourceControlWCCName</key>
+			<string>iPhoneXMPP</string>
+		</dict>
+	</array>
+</dict>
+</plist>
